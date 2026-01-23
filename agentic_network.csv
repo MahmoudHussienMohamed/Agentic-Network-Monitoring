@@ -1,0 +1,501 @@
+event_id,sample_id,role,event_time,event_type,event_text,label,target_text
+E-0001,1,observer,2026-01-01T14:34:11Z,netflow,Outbound connection from WS-141 to 190.44.216.9:80 bytes_out=198493,benign,Normal network flow.
+E-0002,2,observer,2026-01-01T15:27:29Z,auth,User youssef login success on WS-288 from 10.214.112.115,benign,Normal authentication event.
+E-0003,3,observer,2026-01-04T21:00:29Z,dns,High entropy DNS query gfygwwqc38hyf9sxmecosfo.cdn.verify.cn from WS-217,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0003,4,responder,2026-01-04T21:00:29Z,alert,Alert received: High entropy DNS query gfygwwqc38hyf9sxmecosfo.cdn.verify.cn from WS-217,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0003,5,consultant,2026-01-04T21:00:29Z,correlation,Correlation analysis for High entropy DNS query gfygwwqc38hyf9sxmecosfo.cdn.verify.cn from WS-217,staged_attack,"Hypothesis: multi-stage compromise leading to DNS-based exfiltration. Next: IR escalation, isolate host, hunt related DNS IOCs, review auth history."
+E-0004,6,observer,2026-01-18T00:50:23Z,netflow,Unusual outbound connection from SRV-50 to 10.83.236.98:53 bytes_out=1942685,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0004,7,responder,2026-01-18T00:50:23Z,alert,Alert received: Unusual outbound connection from SRV-50 to 10.83.236.98:53 bytes_out=1942685,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0005,8,observer,2026-01-02T08:35:10Z,app,Service crm responded 200 OK on WS-118,benign,Normal application health event.
+E-0005,9,responder,2026-01-02T08:35:10Z,alert,Alert received: Service crm responded 200 OK on WS-118,benign,Dismiss as low risk; continue monitoring.
+E-0006,10,observer,2026-01-08T15:18:47Z,app,Service payments responded 200 OK on WS-109,benign,Normal application health event.
+E-0007,11,observer,2026-01-14T01:58:37Z,netflow,Unusual outbound connection from WS-135 to 36.252.46.194:80 bytes_out=1807863,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0007,12,responder,2026-01-14T01:58:37Z,alert,Alert received: Unusual outbound connection from WS-135 to 36.252.46.194:80 bytes_out=1807863,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0008,13,observer,2026-01-02T13:00:27Z,auth,User nour login success on WS-198 from 10.239.128.249,benign,Normal authentication event.
+E-0008,14,responder,2026-01-02T13:00:27Z,alert,Alert received: User nour login success on WS-198 from 10.239.128.249,benign,Dismiss as low risk; continue monitoring.
+E-0009,15,observer,2026-01-03T18:43:52Z,netflow,Outbound connection from SRV-50 to 10.80.232.1:53 bytes_out=1051805,benign,Normal network flow.
+E-0010,16,observer,2026-01-16T04:15:49Z,dns,High entropy DNS query 7au5bhxtpdpff5e8ii49kq71n8.img.account.cn from WS-153,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0010,17,responder,2026-01-16T04:15:49Z,alert,Alert received: High entropy DNS query 7au5bhxtpdpff5e8ii49kq71n8.img.account.cn from WS-153,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0011,18,observer,2026-01-11T23:00:35Z,app,Service billing responded 200 OK on WS-062,benign,Normal application health event.
+E-0012,19,observer,2026-01-02T17:21:23Z,dns,DNS query www.amazon.com from SRV-24,benign,Normal DNS activity; no action needed.
+E-0013,20,observer,2026-01-14T02:07:35Z,auth,User unknown login success on WS-068 from 10.242.124.201,benign,Normal authentication event.
+E-0014,21,observer,2026-01-16T23:53:06Z,dns,High entropy DNS query gdzvgpmm82i1lr3pe2.cdn.secure.tk from WS-221,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0014,22,responder,2026-01-16T23:53:06Z,alert,Alert received: High entropy DNS query gdzvgpmm82i1lr3pe2.cdn.secure.tk from WS-221,anomalous,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0014,23,consultant,2026-01-16T23:53:06Z,correlation,Correlation analysis for High entropy DNS query gdzvgpmm82i1lr3pe2.cdn.secure.tk from WS-221,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0015,24,observer,2026-01-06T17:42:03Z,endpoint,Suspicious process powershell executed on WS-086 by user nour,anomalous,Raise alert: suspicious execution; collect process tree and quarantine if needed.
+E-0015,25,responder,2026-01-06T17:42:03Z,alert,Alert received: Suspicious process powershell executed on WS-086 by user nour,high_risk,"Classify as suspicious execution. Recommend: quarantine endpoint, collect triage package, reset credentials."
+E-0016,26,observer,2026-01-12T01:03:41Z,auth,User nour login success on WS-147 from 10.249.79.49,benign,Normal authentication event.
+E-0016,27,responder,2026-01-12T01:03:41Z,alert,Alert received: User nour login success on WS-147 from 10.249.79.49,benign,Dismiss as low risk; continue monitoring.
+E-0017,28,observer,2026-01-14T03:51:05Z,netflow,Outbound connection from WS-032 to 10.80.29.246:9001 bytes_out=170005,benign,Normal network flow.
+E-0018,29,observer,2026-01-06T17:00:58Z,dns,DNS query login.amazon.com from WS-207,benign,Normal DNS activity; no action needed.
+E-0019,30,observer,2026-01-10T14:33:43Z,dns,High entropy DNS query ea3ge8n6qiwepxsk28t7a9tgiqhg9jrs.img.account.cn from WS-068,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0019,31,responder,2026-01-10T14:33:43Z,alert,Alert received: High entropy DNS query ea3ge8n6qiwepxsk28t7a9tgiqhg9jrs.img.account.cn from WS-068,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0020,32,observer,2026-01-02T05:35:33Z,auth,User jdoe login success on WS-048 from 10.216.141.12,benign,Normal authentication event.
+E-0021,33,observer,2026-01-07T08:36:00Z,netflow,Unusual outbound connection from WS-083 to 20.76.18.214:445 bytes_out=1223611,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0021,34,responder,2026-01-07T08:36:00Z,alert,Alert received: Unusual outbound connection from WS-083 to 20.76.18.214:445 bytes_out=1223611,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0022,35,observer,2026-01-01T23:14:25Z,auth,Multiple failed logins (21) for user youssef on WS-184 from 10.127.52.91,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0022,36,responder,2026-01-01T23:14:25Z,alert,Alert received: Multiple failed logins (21) for user youssef on WS-184 from 10.127.52.91,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0022,37,consultant,2026-01-01T23:14:25Z,correlation,Correlation analysis for Multiple failed logins (21) for user youssef on WS-184 from 10.127.52.91,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0023,38,observer,2026-01-06T17:54:34Z,endpoint,Suspicious process wscript executed on WS-084 by user sara,anomalous,Raise alert: suspicious execution; collect process tree and quarantine if needed.
+E-0023,39,responder,2026-01-06T17:54:34Z,alert,Alert received: Suspicious process wscript executed on WS-084 by user sara,high_risk,"Classify as suspicious execution. Recommend: quarantine endpoint, collect triage package, reset credentials."
+E-0023,40,consultant,2026-01-06T17:54:34Z,correlation,Correlation analysis for Suspicious process wscript executed on WS-084 by user sara,staged_attack,"Hypothesis: malicious execution with possible persistence. Next: quarantine endpoint, analyze process tree, check scheduled tasks, rotate credentials."
+E-0024,41,observer,2026-01-07T00:34:04Z,netflow,Outbound connection from WS-137 to 121.113.102.210:8080 bytes_out=735286,benign,Normal network flow.
+E-0025,42,observer,2026-01-06T12:35:02Z,app,Service email error 503 spike on WS-115,anomalous,Investigate service degradation; check downstream dependencies and recent deployments.
+E-0025,43,responder,2026-01-06T12:35:02Z,alert,Alert received: Service email error 503 spike on WS-115,anomalous,Prioritize incident and assign to analyst; gather supporting telemetry.
+E-0026,44,observer,2026-01-14T00:22:05Z,netflow,Unusual outbound connection from WS-170 to 10.135.19.28:135 bytes_out=913346,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0026,45,responder,2026-01-14T00:22:05Z,alert,Alert received: Unusual outbound connection from WS-170 to 10.135.19.28:135 bytes_out=913346,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0026,46,consultant,2026-01-14T00:22:05Z,correlation,Correlation analysis for Unusual outbound connection from WS-170 to 10.135.19.28:135 bytes_out=913346,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0027,47,observer,2026-01-14T23:53:12Z,dns,DNS query login.office.com from WS-098,benign,Normal DNS activity; no action needed.
+E-0027,48,responder,2026-01-14T23:53:12Z,alert,Alert received: DNS query login.office.com from WS-098,benign,Dismiss as low risk; continue monitoring.
+E-0028,49,observer,2026-01-16T03:00:51Z,endpoint,Endpoint AV scan completed on WS-161 (no threats),benign,Normal endpoint security event.
+E-0029,50,observer,2026-01-08T04:13:53Z,auth,Multiple failed logins (29) for user sara on WS-284 from 10.98.215.171,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0029,51,responder,2026-01-08T04:13:53Z,alert,Alert received: Multiple failed logins (29) for user sara on WS-284 from 10.98.215.171,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0029,52,consultant,2026-01-08T04:13:53Z,correlation,Correlation analysis for Multiple failed logins (29) for user sara on WS-284 from 10.98.215.171,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0030,53,observer,2026-01-10T20:33:21Z,netflow,Unusual outbound connection from WS-281 to 10.164.238.114:8080 bytes_out=1418893,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0030,54,responder,2026-01-10T20:33:21Z,alert,Alert received: Unusual outbound connection from WS-281 to 10.164.238.114:8080 bytes_out=1418893,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0031,55,observer,2026-01-05T02:51:08Z,app,Service vpn responded 200 OK on SRV-38,benign,Normal application health event.
+E-0032,56,observer,2026-01-01T14:13:43Z,dns,DNS query office.com from WS-024,benign,Normal DNS activity; no action needed.
+E-0033,57,observer,2026-01-16T22:10:53Z,dns,DNS query www.apple.com from FW-01,benign,Normal DNS activity; no action needed.
+E-0033,58,responder,2026-01-16T22:10:53Z,alert,Alert received: DNS query www.apple.com from FW-01,benign,Dismiss as low risk; continue monitoring.
+E-0034,59,observer,2026-01-04T05:40:32Z,dns,High entropy DNS query 6192k42qpr75pr2esprvu8fijoyjne00.sync.account.ru from WS-238,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0034,60,responder,2026-01-04T05:40:32Z,alert,Alert received: High entropy DNS query 6192k42qpr75pr2esprvu8fijoyjne00.sync.account.ru from WS-238,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0035,61,observer,2026-01-15T04:15:03Z,app,Service fileshare responded 200 OK on WS-011,benign,Normal application health event.
+E-0036,62,observer,2026-01-11T04:05:51Z,app,Service email responded 200 OK on WS-276,benign,Normal application health event.
+E-0037,63,observer,2026-01-17T11:37:43Z,auth,User unknown login success on WS-208 from 10.84.239.236,benign,Normal authentication event.
+E-0038,64,observer,2026-01-10T13:32:00Z,dns,DNS query api.apple.com from SRV-04,benign,Normal DNS activity; no action needed.
+E-0039,65,observer,2026-01-08T22:24:05Z,dns,High entropy DNS query b8dwoecbpmbjpi4hn3qxkhktg.cdn.verify.pw from WS-173,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0039,66,responder,2026-01-08T22:24:05Z,alert,Alert received: High entropy DNS query b8dwoecbpmbjpi4hn3qxkhktg.cdn.verify.pw from WS-173,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0039,67,consultant,2026-01-08T22:24:05Z,correlation,Correlation analysis for High entropy DNS query b8dwoecbpmbjpi4hn3qxkhktg.cdn.verify.pw from WS-173,staged_attack,"Hypothesis: multi-stage compromise leading to DNS-based exfiltration. Next: IR escalation, isolate host, hunt related DNS IOCs, review auth history."
+E-0040,68,observer,2026-01-17T18:18:43Z,dns,High entropy DNS query hcw81xe6va05g1x3j1l7r8431rupfr.update.secure.cc from SRV-22,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0040,69,responder,2026-01-17T18:18:43Z,alert,Alert received: High entropy DNS query hcw81xe6va05g1x3j1l7r8431rupfr.update.secure.cc from SRV-22,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0041,70,observer,2026-01-08T21:20:04Z,dns,DNS query cdn.zoom.us from WS-094,benign,Normal DNS activity; no action needed.
+E-0042,71,observer,2026-01-05T15:17:54Z,dns,High entropy DNS query 452bfsozptx497w19vw3rtqohmuh8.img.secure.top from WS-044,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0042,72,responder,2026-01-05T15:17:54Z,alert,Alert received: High entropy DNS query 452bfsozptx497w19vw3rtqohmuh8.img.secure.top from WS-044,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0043,73,observer,2026-01-15T11:39:20Z,netflow,Unusual outbound connection from WS-145 to 10.154.7.182:9001 bytes_out=267463,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0043,74,responder,2026-01-15T11:39:20Z,alert,Alert received: Unusual outbound connection from WS-145 to 10.154.7.182:9001 bytes_out=267463,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0043,75,consultant,2026-01-15T11:39:20Z,correlation,Correlation analysis for Unusual outbound connection from WS-145 to 10.154.7.182:9001 bytes_out=267463,staged_attack,"Hypothesis: command-and-control followed by exfiltration attempt. Next: isolate host, block C2, scan lateral movement, collect memory dump."
+E-0044,76,observer,2026-01-12T21:57:27Z,dns,DNS query www.github.com from WS-053,benign,Normal DNS activity; no action needed.
+E-0045,77,observer,2026-01-02T14:03:55Z,dns,DNS query www.zoom.us from WS-206,benign,Normal DNS activity; no action needed.
+E-0046,78,observer,2026-01-15T17:12:20Z,netflow,Unusual outbound connection from SRV-06 to 10.152.219.79:135 bytes_out=1304388,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0046,79,responder,2026-01-15T17:12:20Z,alert,Alert received: Unusual outbound connection from SRV-06 to 10.152.219.79:135 bytes_out=1304388,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0046,80,consultant,2026-01-15T17:12:20Z,correlation,Correlation analysis for Unusual outbound connection from SRV-06 to 10.152.219.79:135 bytes_out=1304388,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0047,81,observer,2026-01-07T10:10:03Z,netflow,Unusual outbound connection from SRV-39 to 10.80.1.105:8080 bytes_out=1447716,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0047,82,responder,2026-01-07T10:10:03Z,alert,Alert received: Unusual outbound connection from SRV-39 to 10.80.1.105:8080 bytes_out=1447716,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0048,83,observer,2026-01-18T01:31:11Z,netflow,Unusual outbound connection from WS-233 to 10.101.217.30:9001 bytes_out=473459,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0048,84,responder,2026-01-18T01:31:11Z,alert,Alert received: Unusual outbound connection from WS-233 to 10.101.217.30:9001 bytes_out=473459,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0048,85,consultant,2026-01-18T01:31:11Z,correlation,Correlation analysis for Unusual outbound connection from WS-233 to 10.101.217.30:9001 bytes_out=473459,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0049,86,observer,2026-01-05T00:39:25Z,dns,DNS query zoom.us from WS-158,benign,Normal DNS activity; no action needed.
+E-0050,87,observer,2026-01-11T15:00:46Z,netflow,Outbound connection from WS-042 to 10.128.13.24:3389 bytes_out=1416106,benign,Normal network flow.
+E-0051,88,observer,2026-01-17T07:37:56Z,endpoint,Endpoint AV scan completed on WS-138 (no threats),benign,Normal endpoint security event.
+E-0052,89,observer,2026-01-15T04:58:45Z,dns,DNS query login.amazon.com from WS-224,benign,Normal DNS activity; no action needed.
+E-0053,90,observer,2026-01-17T20:05:39Z,auth,User hassan login success on WS-254 from 10.205.18.117,benign,Normal authentication event.
+E-0054,91,observer,2026-01-10T19:26:56Z,dns,DNS query cdn.amazon.com from WS-264,benign,Normal DNS activity; no action needed.
+E-0055,92,observer,2026-01-05T22:34:52Z,netflow,Unusual outbound connection from WS-137 to 10.248.62.8:135 bytes_out=1678282,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0055,93,responder,2026-01-05T22:34:52Z,alert,Alert received: Unusual outbound connection from WS-137 to 10.248.62.8:135 bytes_out=1678282,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0056,94,observer,2026-01-03T06:17:53Z,netflow,Outbound connection from WS-116 to 10.255.149.131:53 bytes_out=873346,benign,Normal network flow.
+E-0056,95,responder,2026-01-03T06:17:53Z,alert,Alert received: Outbound connection from WS-116 to 10.255.149.131:53 bytes_out=873346,benign,Dismiss as low risk; continue monitoring.
+E-0057,96,observer,2026-01-14T09:08:06Z,dns,DNS query login.cloudflare.com from WS-075,benign,Normal DNS activity; no action needed.
+E-0058,97,observer,2026-01-07T20:45:56Z,app,Service api_gateway responded 200 OK on WS-153,benign,Normal application health event.
+E-0059,98,observer,2026-01-10T03:44:26Z,netflow,Outbound connection from WS-234 to 10.210.22.82:8080 bytes_out=1480970,benign,Normal network flow.
+E-0060,99,observer,2026-01-16T19:49:42Z,endpoint,Suspicious process wscript executed on WS-078 by user ali,anomalous,Raise alert: suspicious execution; collect process tree and quarantine if needed.
+E-0060,100,responder,2026-01-16T19:49:42Z,alert,Alert received: Suspicious process wscript executed on WS-078 by user ali,anomalous,"Classify as suspicious execution. Recommend: quarantine endpoint, collect triage package, reset credentials."
+E-0060,101,consultant,2026-01-16T19:49:42Z,correlation,Correlation analysis for Suspicious process wscript executed on WS-078 by user ali,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0061,102,observer,2026-01-13T18:23:19Z,auth,User ahmed login success on WS-234 from 10.73.209.223,benign,Normal authentication event.
+E-0062,103,observer,2026-01-07T10:23:13Z,auth,User mahmoud login success on WS-174 from 10.203.41.219,benign,Normal authentication event.
+E-0063,104,observer,2026-01-08T16:28:06Z,netflow,Outbound connection from SRV-21 to 162.147.116.192:443 bytes_out=912104,benign,Normal network flow.
+E-0064,105,observer,2026-01-03T10:32:58Z,netflow,Unusual outbound connection from WS-228 to 10.28.150.92:445 bytes_out=905215,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0064,106,responder,2026-01-03T10:32:58Z,alert,Alert received: Unusual outbound connection from WS-228 to 10.28.150.92:445 bytes_out=905215,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0065,107,observer,2026-01-05T03:01:21Z,app,Service hr_portal responded 200 OK on WS-090,benign,Normal application health event.
+E-0066,108,observer,2026-01-17T04:27:46Z,auth,User ali login success on WS-005 from 10.147.80.19,benign,Normal authentication event.
+E-0067,109,observer,2026-01-16T12:12:31Z,netflow,Unusual outbound connection from WS-218 to 10.196.247.28:3389 bytes_out=801778,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0067,110,responder,2026-01-16T12:12:31Z,alert,Alert received: Unusual outbound connection from WS-218 to 10.196.247.28:3389 bytes_out=801778,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0068,111,observer,2026-01-16T23:26:47Z,dns,DNS query login.apple.com from WS-203,benign,Normal DNS activity; no action needed.
+E-0069,112,observer,2026-01-06T07:34:45Z,app,Service crm error 500 spike on SRV-26,anomalous,Investigate service degradation; check downstream dependencies and recent deployments.
+E-0069,113,responder,2026-01-06T07:34:45Z,alert,Alert received: Service crm error 500 spike on SRV-26,anomalous,Prioritize incident and assign to analyst; gather supporting telemetry.
+E-0070,114,observer,2026-01-18T18:37:49Z,netflow,Outbound connection from WS-068 to 10.102.67.202:9001 bytes_out=1840071,benign,Normal network flow.
+E-0071,115,observer,2026-01-04T23:51:14Z,app,Service crm responded 200 OK on WS-132,benign,Normal application health event.
+E-0072,116,observer,2026-01-06T11:25:48Z,netflow,Unusual outbound connection from SRV-47 to 10.7.135.138:443 bytes_out=955755,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0072,117,responder,2026-01-06T11:25:48Z,alert,Alert received: Unusual outbound connection from SRV-47 to 10.7.135.138:443 bytes_out=955755,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0072,118,consultant,2026-01-06T11:25:48Z,correlation,Correlation analysis for Unusual outbound connection from SRV-47 to 10.7.135.138:443 bytes_out=955755,staged_attack,"Hypothesis: command-and-control followed by exfiltration attempt. Next: isolate host, block C2, scan lateral movement, collect memory dump."
+E-0073,119,observer,2026-01-10T00:23:56Z,netflow,Outbound connection from WS-056 to 10.167.113.166:443 bytes_out=1334538,benign,Normal network flow.
+E-0073,120,responder,2026-01-10T00:23:56Z,alert,Alert received: Outbound connection from WS-056 to 10.167.113.166:443 bytes_out=1334538,benign,Dismiss as low risk; continue monitoring.
+E-0074,121,observer,2026-01-10T21:50:58Z,auth,Multiple failed logins (11) for user sara on WS-060 from 10.23.19.78,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0075,122,observer,2026-01-04T07:01:48Z,app,Service hr_portal error 500 spike on WS-199,anomalous,Investigate service degradation; check downstream dependencies and recent deployments.
+E-0075,123,responder,2026-01-04T07:01:48Z,alert,Alert received: Service hr_portal error 500 spike on WS-199,anomalous,Prioritize incident and assign to analyst; gather supporting telemetry.
+E-0075,124,consultant,2026-01-04T07:01:48Z,correlation,Correlation analysis for Service hr_portal error 500 spike on WS-199,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0076,125,observer,2026-01-07T18:57:37Z,endpoint,Endpoint AV scan completed on WS-017 (no threats),benign,Normal endpoint security event.
+E-0077,126,observer,2026-01-17T15:26:15Z,auth,User mohamed login success on WS-189 from 10.183.31.102,benign,Normal authentication event.
+E-0077,127,responder,2026-01-17T15:26:15Z,alert,Alert received: User mohamed login success on WS-189 from 10.183.31.102,benign,Dismiss as low risk; continue monitoring.
+E-0078,128,observer,2026-01-12T00:53:31Z,endpoint,Suspicious process cmd executed on WS-047 by user jdoe,anomalous,Raise alert: suspicious execution; collect process tree and quarantine if needed.
+E-0078,129,responder,2026-01-12T00:53:31Z,alert,Alert received: Suspicious process cmd executed on WS-047 by user jdoe,anomalous,"Classify as suspicious execution. Recommend: quarantine endpoint, collect triage package, reset credentials."
+E-0078,130,consultant,2026-01-12T00:53:31Z,correlation,Correlation analysis for Suspicious process cmd executed on WS-047 by user jdoe,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0079,131,observer,2026-01-14T10:50:57Z,dns,High entropy DNS query arji8qlhbiawpublqdi07he42x6g26.img.account.xyz from WS-107,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0079,132,responder,2026-01-14T10:50:57Z,alert,Alert received: High entropy DNS query arji8qlhbiawpublqdi07he42x6g26.img.account.xyz from WS-107,anomalous,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0079,133,consultant,2026-01-14T10:50:57Z,correlation,Correlation analysis for High entropy DNS query arji8qlhbiawpublqdi07he42x6g26.img.account.xyz from WS-107,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0080,134,observer,2026-01-16T14:46:23Z,auth,User ahmed login success on WS-016 from 10.245.205.110,benign,Normal authentication event.
+E-0081,135,observer,2026-01-02T18:48:41Z,app,Service email responded 200 OK on WS-042,benign,Normal application health event.
+E-0082,136,observer,2026-01-10T05:53:34Z,netflow,Outbound connection from SRV-06 to 10.50.58.219:9001 bytes_out=1513710,benign,Normal network flow.
+E-0083,137,observer,2026-01-11T01:03:49Z,app,Service crm responded 200 OK on WS-174,benign,Normal application health event.
+E-0084,138,observer,2026-01-04T16:55:07Z,dns,DNS query www.cloudflare.com from VPN-GW,benign,Normal DNS activity; no action needed.
+E-0085,139,observer,2026-01-02T10:56:29Z,dns,DNS query cloudflare.com from SRV-01,benign,Normal DNS activity; no action needed.
+E-0086,140,observer,2026-01-03T12:21:06Z,auth,User mohamed login success on WS-296 from 10.108.79.169,benign,Normal authentication event.
+E-0087,141,observer,2026-01-14T12:02:53Z,auth,User mariam login success on WS-189 from 10.142.115.207,benign,Normal authentication event.
+E-0088,142,observer,2026-01-16T02:10:49Z,netflow,Outbound connection from SRV-15 to 180.158.173.90:80 bytes_out=382435,benign,Normal network flow.
+E-0089,143,observer,2026-01-10T17:28:25Z,netflow,Outbound connection from WS-036 to 10.192.214.117:445 bytes_out=332111,benign,Normal network flow.
+E-0090,144,observer,2026-01-14T18:38:49Z,netflow,Unusual outbound connection from SRV-06 to 10.25.41.70:8080 bytes_out=1390186,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0090,145,responder,2026-01-14T18:38:49Z,alert,Alert received: Unusual outbound connection from SRV-06 to 10.25.41.70:8080 bytes_out=1390186,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0091,146,observer,2026-01-13T10:27:48Z,dns,High entropy DNS query 57tcozdantniqsuha51liy8o69w.cdn.verify.cc from WS-059,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0091,147,responder,2026-01-13T10:27:48Z,alert,Alert received: High entropy DNS query 57tcozdantniqsuha51liy8o69w.cdn.verify.cc from WS-059,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0092,148,observer,2026-01-08T14:22:15Z,dns,DNS query login.microsoft.com from WS-295,benign,Normal DNS activity; no action needed.
+E-0092,149,responder,2026-01-08T14:22:15Z,alert,Alert received: DNS query login.microsoft.com from WS-295,benign,Dismiss as low risk; continue monitoring.
+E-0093,150,observer,2026-01-17T17:43:37Z,auth,User mariam login success on WS-186 from 10.223.54.63,benign,Normal authentication event.
+E-0094,151,observer,2026-01-08T12:44:52Z,dns,DNS query cdn.google.com from WS-174,benign,Normal DNS activity; no action needed.
+E-0094,152,responder,2026-01-08T12:44:52Z,alert,Alert received: DNS query cdn.google.com from WS-174,benign,Dismiss as low risk; continue monitoring.
+E-0095,153,observer,2026-01-18T15:43:44Z,auth,User sara login success on SRV-31 from 10.120.52.38,benign,Normal authentication event.
+E-0096,154,observer,2026-01-16T21:51:42Z,dns,DNS query apple.com from WS-039,benign,Normal DNS activity; no action needed.
+E-0097,155,observer,2026-01-16T03:48:37Z,netflow,Outbound connection from WS-166 to 114.155.140.152:80 bytes_out=740076,benign,Normal network flow.
+E-0098,156,observer,2026-01-11T23:15:32Z,auth,User ahmed login success on WS-020 from 10.188.146.20,benign,Normal authentication event.
+E-0098,157,responder,2026-01-11T23:15:32Z,alert,Alert received: User ahmed login success on WS-020 from 10.188.146.20,benign,Dismiss as low risk; continue monitoring.
+E-0099,158,observer,2026-01-15T10:04:35Z,dns,High entropy DNS query mu46jd2gvf6lcp2277kxxsy0vdv.cdn.verify.xyz from WS-260,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0099,159,responder,2026-01-15T10:04:35Z,alert,Alert received: High entropy DNS query mu46jd2gvf6lcp2277kxxsy0vdv.cdn.verify.xyz from WS-260,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0100,160,observer,2026-01-15T15:05:55Z,app,Service fileshare responded 200 OK on WS-077,benign,Normal application health event.
+E-0101,161,observer,2026-01-04T03:07:11Z,netflow,Unusual outbound connection from SRV-05 to 10.168.65.172:9001 bytes_out=197985,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0101,162,responder,2026-01-04T03:07:11Z,alert,Alert received: Unusual outbound connection from SRV-05 to 10.168.65.172:9001 bytes_out=197985,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0102,163,observer,2026-01-05T09:00:38Z,auth,Multiple failed logins (12) for user fatma on WS-110 from 10.248.98.58,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0103,164,observer,2026-01-03T10:55:07Z,app,Service hr_portal responded 200 OK on WS-260,benign,Normal application health event.
+E-0104,165,observer,2026-01-17T19:36:42Z,dns,DNS query mail.office.com from SRV-20,benign,Normal DNS activity; no action needed.
+E-0105,166,observer,2026-01-06T16:18:59Z,app,Service vpn responded 200 OK on WS-274,benign,Normal application health event.
+E-0105,167,responder,2026-01-06T16:18:59Z,alert,Alert received: Service vpn responded 200 OK on WS-274,benign,Dismiss as low risk; continue monitoring.
+E-0106,168,observer,2026-01-12T04:56:53Z,endpoint,Endpoint AV scan completed on WS-145 (no threats),benign,Normal endpoint security event.
+E-0107,169,observer,2026-01-02T06:23:48Z,app,Service api_gateway error 503 spike on SRV-29,anomalous,Investigate service degradation; check downstream dependencies and recent deployments.
+E-0108,170,observer,2026-01-11T21:44:50Z,dns,High entropy DNS query 2wb0dz6xpyfxobugvjics4i42afbqnj.update.secure.cc from WS-263,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0108,171,responder,2026-01-11T21:44:50Z,alert,Alert received: High entropy DNS query 2wb0dz6xpyfxobugvjics4i42afbqnj.update.secure.cc from WS-263,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0109,172,observer,2026-01-16T02:48:48Z,auth,User mariam login success on WS-235 from 10.56.255.153,benign,Normal authentication event.
+E-0110,173,observer,2026-01-18T10:34:56Z,netflow,Outbound connection from WS-074 to 10.213.95.171:443 bytes_out=1099826,benign,Normal network flow.
+E-0111,174,observer,2026-01-13T07:32:23Z,netflow,Outbound connection from WS-260 to 10.198.191.65:80 bytes_out=750880,benign,Normal network flow.
+E-0112,175,observer,2026-01-18T18:58:08Z,auth,User jdoe login success on SRV-37 from 10.53.170.35,benign,Normal authentication event.
+E-0113,176,observer,2026-01-05T05:59:48Z,app,Service hr_portal responded 200 OK on DC-01,benign,Normal application health event.
+E-0114,177,observer,2026-01-08T02:56:33Z,auth,Multiple failed logins (24) for user ahmed on WS-104 from 10.102.21.81,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0114,178,responder,2026-01-08T02:56:33Z,alert,Alert received: Multiple failed logins (24) for user ahmed on WS-104 from 10.102.21.81,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0115,179,observer,2026-01-01T21:19:59Z,auth,Multiple failed logins (28) for user youssef on SRV-32 from 10.146.182.221,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0115,180,responder,2026-01-01T21:19:59Z,alert,Alert received: Multiple failed logins (28) for user youssef on SRV-32 from 10.146.182.221,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0116,181,observer,2026-01-10T17:01:46Z,auth,User nour login success on WS-226 from 10.173.95.128,benign,Normal authentication event.
+E-0117,182,observer,2026-01-07T11:22:33Z,app,Service hr_portal responded 200 OK on WS-043,benign,Normal application health event.
+E-0118,183,observer,2026-01-17T01:00:48Z,dns,High entropy DNS query 2cw1rdezx6kbj2ciepxxycj.update.verify.cn from WS-152,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0119,184,observer,2026-01-09T21:45:49Z,dns,DNS query mail.github.com from WS-204,benign,Normal DNS activity; no action needed.
+E-0119,185,responder,2026-01-09T21:45:49Z,alert,Alert received: DNS query mail.github.com from WS-204,benign,Dismiss as low risk; continue monitoring.
+E-0120,186,observer,2026-01-07T07:37:47Z,dns,DNS query mail.google.com from WS-229,benign,Normal DNS activity; no action needed.
+E-0121,187,observer,2026-01-17T13:15:09Z,endpoint,Endpoint AV scan completed on WS-164 (no threats),benign,Normal endpoint security event.
+E-0122,188,observer,2026-01-18T06:39:31Z,app,Service vpn error 502 spike on SRV-27,anomalous,Investigate service degradation; check downstream dependencies and recent deployments.
+E-0122,189,responder,2026-01-18T06:39:31Z,alert,Alert received: Service vpn error 502 spike on SRV-27,anomalous,Prioritize incident and assign to analyst; gather supporting telemetry.
+E-0122,190,consultant,2026-01-18T06:39:31Z,correlation,Correlation analysis for Service vpn error 502 spike on SRV-27,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0123,191,observer,2026-01-09T22:54:22Z,netflow,Unusual outbound connection from WS-240 to 10.245.210.197:4444 bytes_out=1728667,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0124,192,observer,2026-01-02T19:12:15Z,auth,Multiple failed logins (25) for user ali on WS-231 from 10.176.65.225,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0124,193,responder,2026-01-02T19:12:15Z,alert,Alert received: Multiple failed logins (25) for user ali on WS-231 from 10.176.65.225,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0125,194,observer,2026-01-11T12:01:06Z,endpoint,Endpoint AV scan completed on WS-258 (no threats),benign,Normal endpoint security event.
+E-0126,195,observer,2026-01-09T09:34:22Z,netflow,Unusual outbound connection from WS-266 to 10.140.64.161:53 bytes_out=1290549,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0126,196,responder,2026-01-09T09:34:22Z,alert,Alert received: Unusual outbound connection from WS-266 to 10.140.64.161:53 bytes_out=1290549,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0127,197,observer,2026-01-04T17:49:28Z,endpoint,Suspicious process powershell executed on WS-088 by user jdoe,anomalous,Raise alert: suspicious execution; collect process tree and quarantine if needed.
+E-0128,198,observer,2026-01-14T23:59:36Z,netflow,Unusual outbound connection from WS-136 to 10.254.148.165:53 bytes_out=1014808,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0128,199,responder,2026-01-14T23:59:36Z,alert,Alert received: Unusual outbound connection from WS-136 to 10.254.148.165:53 bytes_out=1014808,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0128,200,consultant,2026-01-14T23:59:36Z,correlation,Correlation analysis for Unusual outbound connection from WS-136 to 10.254.148.165:53 bytes_out=1014808,staged_attack,"Hypothesis: command-and-control followed by exfiltration attempt. Next: isolate host, block C2, scan lateral movement, collect memory dump."
+E-0129,201,observer,2026-01-04T20:05:18Z,netflow,Outbound connection from WS-226 to 10.73.160.221:445 bytes_out=1541728,benign,Normal network flow.
+E-0130,202,observer,2026-01-09T23:51:19Z,auth,User mohamed login success on WS-264 from 10.54.163.62,benign,Normal authentication event.
+E-0131,203,observer,2026-01-03T08:23:48Z,dns,High entropy DNS query kuumk5635t5bfz63pnwdds54s8ag1iqx.update.verify.xyz from WS-026,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0131,204,responder,2026-01-03T08:23:48Z,alert,Alert received: High entropy DNS query kuumk5635t5bfz63pnwdds54s8ag1iqx.update.verify.xyz from WS-026,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0132,205,observer,2026-01-02T18:50:07Z,netflow,Unusual outbound connection from WS-198 to 10.60.65.250:443 bytes_out=828075,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0132,206,responder,2026-01-02T18:50:07Z,alert,Alert received: Unusual outbound connection from WS-198 to 10.60.65.250:443 bytes_out=828075,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0132,207,consultant,2026-01-02T18:50:07Z,correlation,Correlation analysis for Unusual outbound connection from WS-198 to 10.60.65.250:443 bytes_out=828075,staged_attack,"Hypothesis: command-and-control followed by exfiltration attempt. Next: isolate host, block C2, scan lateral movement, collect memory dump."
+E-0133,208,observer,2026-01-15T14:57:36Z,dns,DNS query mail.amazon.com from WS-261,benign,Normal DNS activity; no action needed.
+E-0134,209,observer,2026-01-04T09:25:41Z,app,Service email responded 200 OK on WS-168,benign,Normal application health event.
+E-0135,210,observer,2026-01-12T21:21:22Z,auth,User hassan login success on WS-289 from 10.243.8.95,benign,Normal authentication event.
+E-0136,211,observer,2026-01-08T11:14:07Z,auth,Multiple failed logins (26) for user jdoe on FW-01 from 10.13.242.68,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0136,212,responder,2026-01-08T11:14:07Z,alert,Alert received: Multiple failed logins (26) for user jdoe on FW-01 from 10.13.242.68,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0137,213,observer,2026-01-05T03:19:49Z,netflow,Unusual outbound connection from WS-269 to 10.16.56.49:80 bytes_out=926924,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0137,214,responder,2026-01-05T03:19:49Z,alert,Alert received: Unusual outbound connection from WS-269 to 10.16.56.49:80 bytes_out=926924,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0138,215,observer,2026-01-15T20:12:42Z,auth,User unknown login success on WS-242 from 10.31.70.133,benign,Normal authentication event.
+E-0139,216,observer,2026-01-13T18:06:45Z,netflow,Outbound connection from WS-193 to 10.181.135.157:8080 bytes_out=405207,benign,Normal network flow.
+E-0139,217,responder,2026-01-13T18:06:45Z,alert,Alert received: Outbound connection from WS-193 to 10.181.135.157:8080 bytes_out=405207,benign,Dismiss as low risk; continue monitoring.
+E-0140,218,observer,2026-01-08T05:53:18Z,dns,High entropy DNS query 4w9rsh8yzwjscsfw2q4nm8r.sync.secure.xyz from WS-116,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0140,219,responder,2026-01-08T05:53:18Z,alert,Alert received: High entropy DNS query 4w9rsh8yzwjscsfw2q4nm8r.sync.secure.xyz from WS-116,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0141,220,observer,2026-01-13T21:21:14Z,netflow,Outbound connection from WS-116 to 10.241.51.175:22 bytes_out=12866,benign,Normal network flow.
+E-0141,221,responder,2026-01-13T21:21:14Z,alert,Alert received: Outbound connection from WS-116 to 10.241.51.175:22 bytes_out=12866,benign,Dismiss as low risk; continue monitoring.
+E-0142,222,observer,2026-01-04T20:00:26Z,endpoint,Endpoint AV scan completed on WS-209 (no threats),benign,Normal endpoint security event.
+E-0142,223,responder,2026-01-04T20:00:26Z,alert,Alert received: Endpoint AV scan completed on WS-209 (no threats),benign,Dismiss as low risk; continue monitoring.
+E-0143,224,observer,2026-01-16T16:15:46Z,auth,Multiple failed logins (21) for user mariam on WS-031 from 10.118.19.234,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0143,225,responder,2026-01-16T16:15:46Z,alert,Alert received: Multiple failed logins (21) for user mariam on WS-031 from 10.118.19.234,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0143,226,consultant,2026-01-16T16:15:46Z,correlation,Correlation analysis for Multiple failed logins (21) for user mariam on WS-031 from 10.118.19.234,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0144,227,observer,2026-01-10T15:15:57Z,app,Service email responded 200 OK on WS-254,benign,Normal application health event.
+E-0145,228,observer,2026-01-07T21:46:09Z,endpoint,Endpoint AV scan completed on WS-233 (no threats),benign,Normal endpoint security event.
+E-0146,229,observer,2026-01-09T00:38:14Z,app,Service hr_portal responded 200 OK on WS-084,benign,Normal application health event.
+E-0147,230,observer,2026-01-17T08:52:01Z,dns,DNS query cloudflare.com from WS-099,benign,Normal DNS activity; no action needed.
+E-0147,231,responder,2026-01-17T08:52:01Z,alert,Alert received: DNS query cloudflare.com from WS-099,benign,Dismiss as low risk; continue monitoring.
+E-0148,232,observer,2026-01-07T00:29:52Z,auth,Multiple failed logins (18) for user hassan on WS-004 from 10.196.120.115,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0148,233,responder,2026-01-07T00:29:52Z,alert,Alert received: Multiple failed logins (18) for user hassan on WS-004 from 10.196.120.115,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0149,234,observer,2026-01-16T20:47:53Z,dns,DNS query api.zoom.us from WS-185,benign,Normal DNS activity; no action needed.
+E-0150,235,observer,2026-01-18T01:51:06Z,app,Service vpn responded 200 OK on WS-160,benign,Normal application health event.
+E-0151,236,observer,2026-01-15T16:52:06Z,dns,DNS query cdn.google.com from WS-192,benign,Normal DNS activity; no action needed.
+E-0152,237,observer,2026-01-14T16:39:07Z,dns,DNS query www.apple.com from WS-058,benign,Normal DNS activity; no action needed.
+E-0153,238,observer,2026-01-13T09:18:54Z,auth,User ahmed login success on WS-229 from 10.232.67.132,benign,Normal authentication event.
+E-0154,239,observer,2026-01-17T07:54:56Z,netflow,Unusual outbound connection from WS-158 to 10.111.37.12:4444 bytes_out=724529,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0154,240,responder,2026-01-17T07:54:56Z,alert,Alert received: Unusual outbound connection from WS-158 to 10.111.37.12:4444 bytes_out=724529,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0155,241,observer,2026-01-12T11:00:05Z,app,Service hr_portal error 504 spike on WS-017,anomalous,Investigate service degradation; check downstream dependencies and recent deployments.
+E-0155,242,responder,2026-01-12T11:00:05Z,alert,Alert received: Service hr_portal error 504 spike on WS-017,anomalous,Prioritize incident and assign to analyst; gather supporting telemetry.
+E-0156,243,observer,2026-01-10T03:54:27Z,auth,User mariam login success on WS-193 from 10.68.178.31,benign,Normal authentication event.
+E-0157,244,observer,2026-01-18T16:00:29Z,netflow,Outbound connection from WS-115 to 10.217.194.211:3389 bytes_out=521070,benign,Normal network flow.
+E-0158,245,observer,2026-01-05T13:47:52Z,dns,DNS query cdn.google.com from WS-058,benign,Normal DNS activity; no action needed.
+E-0159,246,observer,2026-01-02T04:21:21Z,netflow,Outbound connection from WS-126 to 56.28.71.129:53 bytes_out=493072,benign,Normal network flow.
+E-0160,247,observer,2026-01-08T17:46:29Z,netflow,Outbound connection from WS-296 to 10.113.211.77:53 bytes_out=129837,benign,Normal network flow.
+E-0161,248,observer,2026-01-18T20:17:31Z,netflow,Unusual outbound connection from WS-090 to 10.195.163.179:4444 bytes_out=858181,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0161,249,responder,2026-01-18T20:17:31Z,alert,Alert received: Unusual outbound connection from WS-090 to 10.195.163.179:4444 bytes_out=858181,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0162,250,observer,2026-01-06T11:16:21Z,auth,User unknown login success on WS-154 from 10.73.237.235,benign,Normal authentication event.
+E-0163,251,observer,2026-01-13T20:44:33Z,auth,User nour login success on WS-069 from 10.124.130.53,benign,Normal authentication event.
+E-0164,252,observer,2026-01-10T00:10:05Z,auth,User mohamed login success on WS-048 from 10.97.26.69,benign,Normal authentication event.
+E-0165,253,observer,2026-01-02T18:23:59Z,dns,High entropy DNS query tanmh4pnzp9usy38wtqx653.cdn.account.ru from WS-097,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0165,254,responder,2026-01-02T18:23:59Z,alert,Alert received: High entropy DNS query tanmh4pnzp9usy38wtqx653.cdn.account.ru from WS-097,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0166,255,observer,2026-01-02T02:37:52Z,auth,User youssef login success on WS-289 from 10.74.8.67,benign,Normal authentication event.
+E-0167,256,observer,2026-01-08T03:57:43Z,netflow,Outbound connection from WS-079 to 10.125.255.141:445 bytes_out=541653,benign,Normal network flow.
+E-0168,257,observer,2026-01-18T13:30:10Z,auth,Multiple failed logins (19) for user unknown on SRV-29 from 10.251.235.44,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0168,258,responder,2026-01-18T13:30:10Z,alert,Alert received: Multiple failed logins (19) for user unknown on SRV-29 from 10.251.235.44,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0169,259,observer,2026-01-14T03:49:03Z,auth,Multiple failed logins (9) for user ahmed on SRV-29 from 10.17.38.242,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0169,260,responder,2026-01-14T03:49:03Z,alert,Alert received: Multiple failed logins (9) for user ahmed on SRV-29 from 10.17.38.242,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0169,261,consultant,2026-01-14T03:49:03Z,correlation,Correlation analysis for Multiple failed logins (9) for user ahmed on SRV-29 from 10.17.38.242,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0170,262,observer,2026-01-06T14:49:11Z,app,Service api_gateway responded 200 OK on WS-035,benign,Normal application health event.
+E-0171,263,observer,2026-01-15T23:08:54Z,netflow,Unusual outbound connection from WS-248 to 10.210.6.5:9001 bytes_out=1516547,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0171,264,responder,2026-01-15T23:08:54Z,alert,Alert received: Unusual outbound connection from WS-248 to 10.210.6.5:9001 bytes_out=1516547,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0171,265,consultant,2026-01-15T23:08:54Z,correlation,Correlation analysis for Unusual outbound connection from WS-248 to 10.210.6.5:9001 bytes_out=1516547,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0172,266,observer,2026-01-05T08:25:49Z,netflow,Unusual outbound connection from WS-055 to 10.129.181.69:4444 bytes_out=167715,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0172,267,responder,2026-01-05T08:25:49Z,alert,Alert received: Unusual outbound connection from WS-055 to 10.129.181.69:4444 bytes_out=167715,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0173,268,observer,2026-01-06T11:34:16Z,endpoint,Endpoint AV scan completed on WS-154 (no threats),benign,Normal endpoint security event.
+E-0174,269,observer,2026-01-16T10:55:57Z,auth,Multiple failed logins (28) for user unknown on WS-005 from 10.87.42.128,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0174,270,responder,2026-01-16T10:55:57Z,alert,Alert received: Multiple failed logins (28) for user unknown on WS-005 from 10.87.42.128,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0174,271,consultant,2026-01-16T10:55:57Z,correlation,Correlation analysis for Multiple failed logins (28) for user unknown on WS-005 from 10.87.42.128,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0175,272,observer,2026-01-03T07:33:08Z,app,Service payments responded 200 OK on WS-271,benign,Normal application health event.
+E-0175,273,responder,2026-01-03T07:33:08Z,alert,Alert received: Service payments responded 200 OK on WS-271,benign,Dismiss as low risk; continue monitoring.
+E-0176,274,observer,2026-01-07T19:19:44Z,netflow,Outbound connection from WS-279 to 10.8.106.151:22 bytes_out=1579591,benign,Normal network flow.
+E-0177,275,observer,2026-01-08T06:20:29Z,endpoint,Suspicious process wscript executed on WS-084 by user mahmoud,anomalous,Raise alert: suspicious execution; collect process tree and quarantine if needed.
+E-0177,276,responder,2026-01-08T06:20:29Z,alert,Alert received: Suspicious process wscript executed on WS-084 by user mahmoud,anomalous,"Classify as suspicious execution. Recommend: quarantine endpoint, collect triage package, reset credentials."
+E-0178,277,observer,2026-01-17T17:33:08Z,app,Service inventory responded 200 OK on WS-041,benign,Normal application health event.
+E-0179,278,observer,2026-01-15T21:36:08Z,netflow,Outbound connection from SRV-05 to 10.230.251.59:445 bytes_out=1161804,benign,Normal network flow.
+E-0180,279,observer,2026-01-17T00:52:09Z,netflow,Unusual outbound connection from WS-195 to 69.78.194.183:22 bytes_out=1553169,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0180,280,responder,2026-01-17T00:52:09Z,alert,Alert received: Unusual outbound connection from WS-195 to 69.78.194.183:22 bytes_out=1553169,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0181,281,observer,2026-01-11T19:04:38Z,endpoint,Endpoint AV scan completed on WS-185 (no threats),benign,Normal endpoint security event.
+E-0182,282,observer,2026-01-10T21:42:10Z,netflow,Unusual outbound connection from WS-053 to 154.166.197.4:53 bytes_out=869822,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0183,283,observer,2026-01-06T21:24:27Z,app,Service hr_portal responded 200 OK on WS-293,benign,Normal application health event.
+E-0184,284,observer,2026-01-05T01:24:19Z,dns,High entropy DNS query qp5m3gitazvyv2v1itum4ul.update.verify.cn from WS-223,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0184,285,responder,2026-01-05T01:24:19Z,alert,Alert received: High entropy DNS query qp5m3gitazvyv2v1itum4ul.update.verify.cn from WS-223,anomalous,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0185,286,observer,2026-01-08T21:50:32Z,app,Service vpn responded 200 OK on WS-193,benign,Normal application health event.
+E-0186,287,observer,2026-01-14T08:27:21Z,netflow,Outbound connection from WS-014 to 10.35.209.173:8080 bytes_out=293879,benign,Normal network flow.
+E-0187,288,observer,2026-01-16T23:41:56Z,dns,DNS query cdn.apple.com from WS-079,benign,Normal DNS activity; no action needed.
+E-0188,289,observer,2026-01-17T18:56:58Z,endpoint,Suspicious process rundll32 executed on WS-215 by user mohamed,anomalous,Raise alert: suspicious execution; collect process tree and quarantine if needed.
+E-0188,290,responder,2026-01-17T18:56:58Z,alert,Alert received: Suspicious process rundll32 executed on WS-215 by user mohamed,anomalous,"Classify as suspicious execution. Recommend: quarantine endpoint, collect triage package, reset credentials."
+E-0189,291,observer,2026-01-07T00:36:18Z,dns,DNS query login.cloudflare.com from SRV-37,benign,Normal DNS activity; no action needed.
+E-0190,292,observer,2026-01-07T06:43:33Z,dns,DNS query login.github.com from WS-114,benign,Normal DNS activity; no action needed.
+E-0191,293,observer,2026-01-03T02:00:50Z,dns,DNS query cdn.office.com from WS-060,benign,Normal DNS activity; no action needed.
+E-0192,294,observer,2026-01-17T21:53:38Z,auth,Multiple failed logins (11) for user fatma on WS-232 from 10.34.153.12,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0193,295,observer,2026-01-03T15:42:30Z,auth,User sara login success on SRV-47 from 10.124.89.142,benign,Normal authentication event.
+E-0194,296,observer,2026-01-06T15:03:56Z,endpoint,Endpoint AV scan completed on WS-208 (no threats),benign,Normal endpoint security event.
+E-0195,297,observer,2026-01-05T18:56:59Z,netflow,Unusual outbound connection from WS-231 to 10.105.142.193:443 bytes_out=1212786,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0195,298,responder,2026-01-05T18:56:59Z,alert,Alert received: Unusual outbound connection from WS-231 to 10.105.142.193:443 bytes_out=1212786,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0195,299,consultant,2026-01-05T18:56:59Z,correlation,Correlation analysis for Unusual outbound connection from WS-231 to 10.105.142.193:443 bytes_out=1212786,staged_attack,"Hypothesis: command-and-control followed by exfiltration attempt. Next: isolate host, block C2, scan lateral movement, collect memory dump."
+E-0196,300,observer,2026-01-07T08:49:54Z,auth,User ali login success on SRV-44 from 10.160.198.157,benign,Normal authentication event.
+E-0197,301,observer,2026-01-12T02:43:23Z,auth,User sara login success on SRV-17 from 10.152.43.173,benign,Normal authentication event.
+E-0198,302,observer,2026-01-05T10:37:52Z,auth,User unknown login success on WS-192 from 10.72.198.108,benign,Normal authentication event.
+E-0199,303,observer,2026-01-12T19:30:21Z,auth,User mohamed login success on SRV-26 from 10.88.85.126,benign,Normal authentication event.
+E-0200,304,observer,2026-01-16T00:49:56Z,app,Service vpn error 504 spike on WS-028,anomalous,Investigate service degradation; check downstream dependencies and recent deployments.
+E-0200,305,responder,2026-01-16T00:49:56Z,alert,Alert received: Service vpn error 504 spike on WS-028,anomalous,Prioritize incident and assign to analyst; gather supporting telemetry.
+E-0201,306,observer,2026-01-11T18:33:44Z,netflow,Unusual outbound connection from WS-251 to 10.149.16.71:3389 bytes_out=1129446,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0201,307,responder,2026-01-11T18:33:44Z,alert,Alert received: Unusual outbound connection from WS-251 to 10.149.16.71:3389 bytes_out=1129446,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0201,308,consultant,2026-01-11T18:33:44Z,correlation,Correlation analysis for Unusual outbound connection from WS-251 to 10.149.16.71:3389 bytes_out=1129446,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0202,309,observer,2026-01-13T09:33:57Z,auth,User mahmoud login success on WS-058 from 10.58.137.199,benign,Normal authentication event.
+E-0202,310,responder,2026-01-13T09:33:57Z,alert,Alert received: User mahmoud login success on WS-058 from 10.58.137.199,benign,Dismiss as low risk; continue monitoring.
+E-0203,311,observer,2026-01-02T00:14:23Z,netflow,Unusual outbound connection from WS-226 to 10.126.152.224:80 bytes_out=945157,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0203,312,responder,2026-01-02T00:14:23Z,alert,Alert received: Unusual outbound connection from WS-226 to 10.126.152.224:80 bytes_out=945157,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0203,313,consultant,2026-01-02T00:14:23Z,correlation,Correlation analysis for Unusual outbound connection from WS-226 to 10.126.152.224:80 bytes_out=945157,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0204,314,observer,2026-01-06T18:01:51Z,dns,DNS query api.office.com from WS-108,benign,Normal DNS activity; no action needed.
+E-0205,315,observer,2026-01-15T11:41:41Z,netflow,Unusual outbound connection from WS-276 to 10.48.69.247:4444 bytes_out=1928797,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0205,316,responder,2026-01-15T11:41:41Z,alert,Alert received: Unusual outbound connection from WS-276 to 10.48.69.247:4444 bytes_out=1928797,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0206,317,observer,2026-01-04T05:17:52Z,netflow,Unusual outbound connection from WS-128 to 10.201.250.37:135 bytes_out=1328243,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0206,318,responder,2026-01-04T05:17:52Z,alert,Alert received: Unusual outbound connection from WS-128 to 10.201.250.37:135 bytes_out=1328243,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0207,319,observer,2026-01-03T06:13:53Z,netflow,Outbound connection from WS-207 to 10.167.1.223:443 bytes_out=1534875,benign,Normal network flow.
+E-0208,320,observer,2026-01-02T12:53:34Z,netflow,Unusual outbound connection from WS-274 to 69.165.145.87:9001 bytes_out=1214014,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0208,321,responder,2026-01-02T12:53:34Z,alert,Alert received: Unusual outbound connection from WS-274 to 69.165.145.87:9001 bytes_out=1214014,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0208,322,consultant,2026-01-02T12:53:34Z,correlation,Correlation analysis for Unusual outbound connection from WS-274 to 69.165.145.87:9001 bytes_out=1214014,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0209,323,observer,2026-01-02T04:12:01Z,app,Service hr_portal responded 200 OK on WS-024,benign,Normal application health event.
+E-0210,324,observer,2026-01-05T21:51:32Z,endpoint,Suspicious process wscript executed on FW-01 by user sara,anomalous,Raise alert: suspicious execution; collect process tree and quarantine if needed.
+E-0211,325,observer,2026-01-03T00:00:48Z,auth,User jdoe login success on WS-191 from 10.84.26.102,benign,Normal authentication event.
+E-0212,326,observer,2026-01-11T10:02:42Z,netflow,Outbound connection from SRV-36 to 10.67.115.133:8080 bytes_out=21476,benign,Normal network flow.
+E-0213,327,observer,2026-01-03T22:15:03Z,auth,User unknown login success on WS-217 from 10.67.244.19,benign,Normal authentication event.
+E-0214,328,observer,2026-01-03T12:07:09Z,app,Service hr_portal responded 200 OK on WS-161,benign,Normal application health event.
+E-0215,329,observer,2026-01-14T16:08:27Z,dns,High entropy DNS query j02nfgihyw1uiprfp9sbtn76mzsd.img.verify.ru from WS-005,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0215,330,responder,2026-01-14T16:08:27Z,alert,Alert received: High entropy DNS query j02nfgihyw1uiprfp9sbtn76mzsd.img.verify.ru from WS-005,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0216,331,observer,2026-01-01T07:01:46Z,netflow,Unusual outbound connection from WS-185 to 10.215.187.140:22 bytes_out=1601552,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0216,332,responder,2026-01-01T07:01:46Z,alert,Alert received: Unusual outbound connection from WS-185 to 10.215.187.140:22 bytes_out=1601552,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0216,333,consultant,2026-01-01T07:01:46Z,correlation,Correlation analysis for Unusual outbound connection from WS-185 to 10.215.187.140:22 bytes_out=1601552,staged_attack,"Hypothesis: command-and-control followed by exfiltration attempt. Next: isolate host, block C2, scan lateral movement, collect memory dump."
+E-0217,334,observer,2026-01-06T05:40:45Z,dns,High entropy DNS query 01zf88jrftf6nj8uzet1pdpf1h3dtl.cdn.secure.tk from WS-021,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0218,335,observer,2026-01-09T09:58:13Z,auth,User mohamed login success on WS-268 from 10.132.85.96,benign,Normal authentication event.
+E-0219,336,observer,2026-01-03T20:46:22Z,dns,DNS query mail.google.com from WS-016,benign,Normal DNS activity; no action needed.
+E-0220,337,observer,2026-01-14T18:14:06Z,auth,User fatma login success on WS-086 from 10.80.130.198,benign,Normal authentication event.
+E-0221,338,observer,2026-01-06T13:03:18Z,netflow,Outbound connection from WS-261 to 94.196.76.46:80 bytes_out=1161441,benign,Normal network flow.
+E-0222,339,observer,2026-01-06T10:47:22Z,netflow,Outbound connection from WS-165 to 10.190.61.129:80 bytes_out=378112,benign,Normal network flow.
+E-0223,340,observer,2026-01-02T02:45:19Z,auth,Multiple failed logins (18) for user mariam on WS-206 from 10.238.144.199,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0224,341,observer,2026-01-09T22:54:39Z,auth,User hassan login success on WS-103 from 10.155.124.119,benign,Normal authentication event.
+E-0224,342,responder,2026-01-09T22:54:39Z,alert,Alert received: User hassan login success on WS-103 from 10.155.124.119,benign,Dismiss as low risk; continue monitoring.
+E-0225,343,observer,2026-01-05T17:50:30Z,endpoint,Endpoint AV scan completed on WS-280 (no threats),benign,Normal endpoint security event.
+E-0226,344,observer,2026-01-17T19:58:12Z,auth,Multiple failed logins (17) for user fatma on WS-005 from 10.0.192.218,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0227,345,observer,2026-01-06T18:44:33Z,netflow,Unusual outbound connection from WS-215 to 10.22.118.230:9001 bytes_out=868242,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0227,346,responder,2026-01-06T18:44:33Z,alert,Alert received: Unusual outbound connection from WS-215 to 10.22.118.230:9001 bytes_out=868242,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0228,347,observer,2026-01-03T07:40:39Z,dns,DNS query cloudflare.com from WS-259,benign,Normal DNS activity; no action needed.
+E-0229,348,observer,2026-01-08T15:30:21Z,dns,DNS query api.google.com from WS-202,benign,Normal DNS activity; no action needed.
+E-0230,349,observer,2026-01-03T13:33:00Z,dns,DNS query api.amazon.com from WS-085,benign,Normal DNS activity; no action needed.
+E-0231,350,observer,2026-01-03T04:40:26Z,app,Service fileshare responded 200 OK on WS-081,benign,Normal application health event.
+E-0232,351,observer,2026-01-10T14:49:44Z,endpoint,Suspicious process powershell executed on WS-263 by user ahmed,anomalous,Raise alert: suspicious execution; collect process tree and quarantine if needed.
+E-0232,352,responder,2026-01-10T14:49:44Z,alert,Alert received: Suspicious process powershell executed on WS-263 by user ahmed,anomalous,"Classify as suspicious execution. Recommend: quarantine endpoint, collect triage package, reset credentials."
+E-0232,353,consultant,2026-01-10T14:49:44Z,correlation,Correlation analysis for Suspicious process powershell executed on WS-263 by user ahmed,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0233,354,observer,2026-01-14T08:28:07Z,netflow,Outbound connection from WS-128 to 10.62.6.16:3389 bytes_out=276129,benign,Normal network flow.
+E-0234,355,observer,2026-01-17T15:47:24Z,auth,Multiple failed logins (8) for user jdoe on SRV-23 from 10.43.132.235,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0234,356,responder,2026-01-17T15:47:24Z,alert,Alert received: Multiple failed logins (8) for user jdoe on SRV-23 from 10.43.132.235,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0234,357,consultant,2026-01-17T15:47:24Z,correlation,Correlation analysis for Multiple failed logins (8) for user jdoe on SRV-23 from 10.43.132.235,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0235,358,observer,2026-01-04T03:01:35Z,netflow,Unusual outbound connection from WS-048 to 10.86.221.211:4444 bytes_out=1042452,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0235,359,responder,2026-01-04T03:01:35Z,alert,Alert received: Unusual outbound connection from WS-048 to 10.86.221.211:4444 bytes_out=1042452,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0236,360,observer,2026-01-05T13:01:24Z,dns,DNS query office.com from WS-141,benign,Normal DNS activity; no action needed.
+E-0237,361,observer,2026-01-02T11:31:22Z,netflow,Unusual outbound connection from WS-045 to 205.127.9.254:4444 bytes_out=1641796,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0237,362,responder,2026-01-02T11:31:22Z,alert,Alert received: Unusual outbound connection from WS-045 to 205.127.9.254:4444 bytes_out=1641796,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0238,363,observer,2026-01-14T17:30:56Z,auth,User fatma login success on WS-258 from 10.198.138.47,benign,Normal authentication event.
+E-0239,364,observer,2026-01-07T19:39:18Z,dns,DNS query office.com from WS-030,benign,Normal DNS activity; no action needed.
+E-0240,365,observer,2026-01-18T21:22:07Z,app,Service hr_portal responded 200 OK on WS-029,benign,Normal application health event.
+E-0241,366,observer,2026-01-17T22:23:48Z,app,Service hr_portal responded 200 OK on WS-184,benign,Normal application health event.
+E-0242,367,observer,2026-01-12T22:44:34Z,endpoint,Endpoint AV scan completed on WS-278 (no threats),benign,Normal endpoint security event.
+E-0243,368,observer,2026-01-13T18:40:42Z,dns,DNS query login.github.com from WS-245,benign,Normal DNS activity; no action needed.
+E-0244,369,observer,2026-01-04T10:31:07Z,netflow,Outbound connection from WS-057 to 10.202.51.87:53 bytes_out=678547,benign,Normal network flow.
+E-0245,370,observer,2026-01-11T14:29:39Z,dns,High entropy DNS query wolytsilazcluog5jvepwukfv2aqn.img.account.xyz from SRV-28,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0245,371,responder,2026-01-11T14:29:39Z,alert,Alert received: High entropy DNS query wolytsilazcluog5jvepwukfv2aqn.img.account.xyz from SRV-28,anomalous,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0245,372,consultant,2026-01-11T14:29:39Z,correlation,Correlation analysis for High entropy DNS query wolytsilazcluog5jvepwukfv2aqn.img.account.xyz from SRV-28,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0246,373,observer,2026-01-11T15:16:54Z,dns,DNS query www.cloudflare.com from WS-215,benign,Normal DNS activity; no action needed.
+E-0247,374,observer,2026-01-17T16:17:59Z,netflow,Unusual outbound connection from WS-116 to 10.150.10.82:53 bytes_out=1997780,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0247,375,responder,2026-01-17T16:17:59Z,alert,Alert received: Unusual outbound connection from WS-116 to 10.150.10.82:53 bytes_out=1997780,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0248,376,observer,2026-01-02T19:41:31Z,dns,DNS query cdn.github.com from WS-281,benign,Normal DNS activity; no action needed.
+E-0249,377,observer,2026-01-05T23:44:30Z,dns,DNS query mail.microsoft.com from WS-098,benign,Normal DNS activity; no action needed.
+E-0250,378,observer,2026-01-09T18:11:53Z,dns,High entropy DNS query 4mgbnksf4htz45qf8ylxyxl2cq2.update.verify.top from WS-002,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0250,379,responder,2026-01-09T18:11:53Z,alert,Alert received: High entropy DNS query 4mgbnksf4htz45qf8ylxyxl2cq2.update.verify.top from WS-002,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0251,380,observer,2026-01-03T08:20:00Z,netflow,Unusual outbound connection from WS-044 to 10.116.31.216:4444 bytes_out=1718320,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0251,381,responder,2026-01-03T08:20:00Z,alert,Alert received: Unusual outbound connection from WS-044 to 10.116.31.216:4444 bytes_out=1718320,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0251,382,consultant,2026-01-03T08:20:00Z,correlation,Correlation analysis for Unusual outbound connection from WS-044 to 10.116.31.216:4444 bytes_out=1718320,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0252,383,observer,2026-01-14T21:37:48Z,endpoint,Suspicious process powershell executed on WS-121 by user ali,anomalous,Raise alert: suspicious execution; collect process tree and quarantine if needed.
+E-0252,384,responder,2026-01-14T21:37:48Z,alert,Alert received: Suspicious process powershell executed on WS-121 by user ali,anomalous,"Classify as suspicious execution. Recommend: quarantine endpoint, collect triage package, reset credentials."
+E-0253,385,observer,2026-01-17T10:41:33Z,app,Service hr_portal error 502 spike on SRV-18,anomalous,Investigate service degradation; check downstream dependencies and recent deployments.
+E-0254,386,observer,2026-01-17T13:56:57Z,auth,Multiple failed logins (10) for user youssef on WS-223 from 10.75.132.82,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0255,387,observer,2026-01-14T09:35:41Z,netflow,Outbound connection from WS-167 to 10.214.57.107:22 bytes_out=312797,benign,Normal network flow.
+E-0256,388,observer,2026-01-03T10:22:23Z,netflow,Unusual outbound connection from WS-055 to 10.176.210.68:4444 bytes_out=1375189,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0256,389,responder,2026-01-03T10:22:23Z,alert,Alert received: Unusual outbound connection from WS-055 to 10.176.210.68:4444 bytes_out=1375189,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0257,390,observer,2026-01-04T11:48:00Z,dns,High entropy DNS query pd4rxbvttr5goit2ur0fm2n.update.account.ru from SRV-17,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0257,391,responder,2026-01-04T11:48:00Z,alert,Alert received: High entropy DNS query pd4rxbvttr5goit2ur0fm2n.update.account.ru from SRV-17,anomalous,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0257,392,consultant,2026-01-04T11:48:00Z,correlation,Correlation analysis for High entropy DNS query pd4rxbvttr5goit2ur0fm2n.update.account.ru from SRV-17,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0258,393,observer,2026-01-04T20:36:29Z,auth,Multiple failed logins (26) for user hassan on WS-034 from 10.206.69.200,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0259,394,observer,2026-01-05T20:55:54Z,dns,High entropy DNS query mrx36zhbpx52l49wwkqfsbydknoon.sync.account.ru from WS-030,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0259,395,responder,2026-01-05T20:55:54Z,alert,Alert received: High entropy DNS query mrx36zhbpx52l49wwkqfsbydknoon.sync.account.ru from WS-030,anomalous,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0259,396,consultant,2026-01-05T20:55:54Z,correlation,Correlation analysis for High entropy DNS query mrx36zhbpx52l49wwkqfsbydknoon.sync.account.ru from WS-030,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0260,397,observer,2026-01-12T12:10:53Z,netflow,Unusual outbound connection from WS-068 to 10.156.140.109:4444 bytes_out=1787905,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0260,398,responder,2026-01-12T12:10:53Z,alert,Alert received: Unusual outbound connection from WS-068 to 10.156.140.109:4444 bytes_out=1787905,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0261,399,observer,2026-01-16T03:16:36Z,netflow,Unusual outbound connection from WS-204 to 10.191.144.77:443 bytes_out=1012278,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0261,400,responder,2026-01-16T03:16:36Z,alert,Alert received: Unusual outbound connection from WS-204 to 10.191.144.77:443 bytes_out=1012278,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0261,401,consultant,2026-01-16T03:16:36Z,correlation,Correlation analysis for Unusual outbound connection from WS-204 to 10.191.144.77:443 bytes_out=1012278,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0262,402,observer,2026-01-07T08:07:44Z,app,Service api_gateway error 500 spike on SRV-36,anomalous,Investigate service degradation; check downstream dependencies and recent deployments.
+E-0262,403,responder,2026-01-07T08:07:44Z,alert,Alert received: Service api_gateway error 500 spike on SRV-36,anomalous,Prioritize incident and assign to analyst; gather supporting telemetry.
+E-0262,404,consultant,2026-01-07T08:07:44Z,correlation,Correlation analysis for Service api_gateway error 500 spike on SRV-36,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0263,405,observer,2026-01-17T00:47:12Z,netflow,Unusual outbound connection from WS-164 to 10.151.132.233:4444 bytes_out=850505,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0264,406,observer,2026-01-14T21:14:19Z,netflow,Unusual outbound connection from WS-098 to 10.183.153.217:22 bytes_out=1764947,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0264,407,responder,2026-01-14T21:14:19Z,alert,Alert received: Unusual outbound connection from WS-098 to 10.183.153.217:22 bytes_out=1764947,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0265,408,observer,2026-01-18T23:36:59Z,auth,User unknown login success on WS-133 from 10.93.171.168,benign,Normal authentication event.
+E-0266,409,observer,2026-01-08T10:53:24Z,netflow,Outbound connection from WS-216 to 10.60.240.14:135 bytes_out=1219004,benign,Normal network flow.
+E-0267,410,observer,2026-01-13T03:32:57Z,app,Service billing error 502 spike on WS-062,anomalous,Investigate service degradation; check downstream dependencies and recent deployments.
+E-0268,411,observer,2026-01-10T22:22:17Z,dns,High entropy DNS query f5vluda2rnkk5fi11z14yac8mxau7m.cdn.account.xyz from WS-292,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0268,412,responder,2026-01-10T22:22:17Z,alert,Alert received: High entropy DNS query f5vluda2rnkk5fi11z14yac8mxau7m.cdn.account.xyz from WS-292,anomalous,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0269,413,observer,2026-01-04T03:06:27Z,auth,Multiple failed logins (17) for user nour on WS-053 from 10.156.85.17,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0269,414,responder,2026-01-04T03:06:27Z,alert,Alert received: Multiple failed logins (17) for user nour on WS-053 from 10.156.85.17,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0269,415,consultant,2026-01-04T03:06:27Z,correlation,Correlation analysis for Multiple failed logins (17) for user nour on WS-053 from 10.156.85.17,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0270,416,observer,2026-01-13T17:19:14Z,netflow,Unusual outbound connection from WS-173 to 10.96.84.243:4444 bytes_out=42107,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0270,417,responder,2026-01-13T17:19:14Z,alert,Alert received: Unusual outbound connection from WS-173 to 10.96.84.243:4444 bytes_out=42107,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0270,418,consultant,2026-01-13T17:19:14Z,correlation,Correlation analysis for Unusual outbound connection from WS-173 to 10.96.84.243:4444 bytes_out=42107,staged_attack,"Hypothesis: command-and-control followed by exfiltration attempt. Next: isolate host, block C2, scan lateral movement, collect memory dump."
+E-0271,419,observer,2026-01-05T02:26:26Z,netflow,Outbound connection from WS-064 to 10.24.24.170:443 bytes_out=1372630,benign,Normal network flow.
+E-0272,420,observer,2026-01-11T18:49:54Z,dns,DNS query login.microsoft.com from WS-195,benign,Normal DNS activity; no action needed.
+E-0273,421,observer,2026-01-16T02:48:21Z,netflow,Unusual outbound connection from SRV-11 to 10.60.144.30:443 bytes_out=1045834,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0273,422,responder,2026-01-16T02:48:21Z,alert,Alert received: Unusual outbound connection from SRV-11 to 10.60.144.30:443 bytes_out=1045834,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0274,423,observer,2026-01-05T21:28:59Z,netflow,Outbound connection from WS-184 to 128.106.246.85:3389 bytes_out=7742,benign,Normal network flow.
+E-0275,424,observer,2026-01-03T16:19:50Z,dns,DNS query google.com from WS-294,benign,Normal DNS activity; no action needed.
+E-0275,425,responder,2026-01-03T16:19:50Z,alert,Alert received: DNS query google.com from WS-294,benign,Dismiss as low risk; continue monitoring.
+E-0276,426,observer,2026-01-12T02:04:36Z,netflow,Unusual outbound connection from WS-152 to 10.20.148.93:445 bytes_out=895376,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0277,427,observer,2026-01-02T02:43:56Z,netflow,Outbound connection from WS-005 to 10.137.47.96:445 bytes_out=385504,benign,Normal network flow.
+E-0278,428,observer,2026-01-12T01:57:11Z,auth,Multiple failed logins (13) for user nour on WS-140 from 10.244.215.167,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0279,429,observer,2026-01-02T10:09:50Z,netflow,Unusual outbound connection from WS-082 to 10.224.92.157:4444 bytes_out=1636025,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0280,430,observer,2026-01-18T15:40:13Z,netflow,Outbound connection from WS-067 to 10.23.32.67:445 bytes_out=27921,benign,Normal network flow.
+E-0281,431,observer,2026-01-14T23:55:20Z,netflow,Outbound connection from WS-290 to 10.127.246.89:4444 bytes_out=313750,benign,Normal network flow.
+E-0282,432,observer,2026-01-02T07:47:13Z,endpoint,Endpoint AV scan completed on WS-006 (no threats),benign,Normal endpoint security event.
+E-0283,433,observer,2026-01-08T18:46:57Z,netflow,Outbound connection from WS-124 to 165.193.206.210:3389 bytes_out=167319,benign,Normal network flow.
+E-0284,434,observer,2026-01-11T21:02:10Z,app,Service payments responded 200 OK on WS-046,benign,Normal application health event.
+E-0285,435,observer,2026-01-01T20:52:25Z,auth,User mohamed login success on WS-286 from 10.0.46.203,benign,Normal authentication event.
+E-0286,436,observer,2026-01-13T08:07:41Z,auth,Multiple failed logins (15) for user youssef on WS-288 from 10.233.174.94,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0286,437,responder,2026-01-13T08:07:41Z,alert,Alert received: Multiple failed logins (15) for user youssef on WS-288 from 10.233.174.94,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0286,438,consultant,2026-01-13T08:07:41Z,correlation,Correlation analysis for Multiple failed logins (15) for user youssef on WS-288 from 10.233.174.94,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0287,439,observer,2026-01-15T13:29:48Z,netflow,Unusual outbound connection from WS-243 to 169.113.1.88:445 bytes_out=1742392,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0287,440,responder,2026-01-15T13:29:48Z,alert,Alert received: Unusual outbound connection from WS-243 to 169.113.1.88:445 bytes_out=1742392,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0287,441,consultant,2026-01-15T13:29:48Z,correlation,Correlation analysis for Unusual outbound connection from WS-243 to 169.113.1.88:445 bytes_out=1742392,staged_attack,"Hypothesis: command-and-control followed by exfiltration attempt. Next: isolate host, block C2, scan lateral movement, collect memory dump."
+E-0288,442,observer,2026-01-04T23:37:38Z,dns,DNS query www.office.com from WS-253,benign,Normal DNS activity; no action needed.
+E-0289,443,observer,2026-01-05T15:01:12Z,auth,User mariam login success on WS-174 from 10.212.23.238,benign,Normal authentication event.
+E-0290,444,observer,2026-01-11T22:26:16Z,dns,DNS query cdn.microsoft.com from WS-235,benign,Normal DNS activity; no action needed.
+E-0291,445,observer,2026-01-13T08:07:31Z,auth,User unknown login success on WS-091 from 10.88.65.27,benign,Normal authentication event.
+E-0292,446,observer,2026-01-13T05:39:55Z,app,Service fileshare error 504 spike on WS-197,anomalous,Investigate service degradation; check downstream dependencies and recent deployments.
+E-0292,447,responder,2026-01-13T05:39:55Z,alert,Alert received: Service fileshare error 504 spike on WS-197,anomalous,Prioritize incident and assign to analyst; gather supporting telemetry.
+E-0292,448,consultant,2026-01-13T05:39:55Z,correlation,Correlation analysis for Service fileshare error 504 spike on WS-197,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0293,449,observer,2026-01-13T10:25:59Z,netflow,Unusual outbound connection from WS-154 to 183.148.176.236:22 bytes_out=1491809,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0293,450,responder,2026-01-13T10:25:59Z,alert,Alert received: Unusual outbound connection from WS-154 to 183.148.176.236:22 bytes_out=1491809,high_risk,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0293,451,consultant,2026-01-13T10:25:59Z,correlation,Correlation analysis for Unusual outbound connection from WS-154 to 183.148.176.236:22 bytes_out=1491809,staged_attack,"Hypothesis: command-and-control followed by exfiltration attempt. Next: isolate host, block C2, scan lateral movement, collect memory dump."
+E-0294,452,observer,2026-01-03T19:13:42Z,auth,Multiple failed logins (25) for user mohamed on WS-181 from 10.245.213.173,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0294,453,responder,2026-01-03T19:13:42Z,alert,Alert received: Multiple failed logins (25) for user mohamed on WS-181 from 10.245.213.173,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0295,454,observer,2026-01-13T16:30:44Z,app,Service billing responded 200 OK on WS-055,benign,Normal application health event.
+E-0296,455,observer,2026-01-07T22:57:56Z,dns,High entropy DNS query 8cw2g9o9yp6sdyy0u9daq.img.account.cc from SRV-50,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0296,456,responder,2026-01-07T22:57:56Z,alert,Alert received: High entropy DNS query 8cw2g9o9yp6sdyy0u9daq.img.account.cc from SRV-50,anomalous,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0296,457,consultant,2026-01-07T22:57:56Z,correlation,Correlation analysis for High entropy DNS query 8cw2g9o9yp6sdyy0u9daq.img.account.cc from SRV-50,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0297,458,observer,2026-01-18T02:28:34Z,app,Service payments responded 200 OK on SRV-32,benign,Normal application health event.
+E-0298,459,observer,2026-01-05T05:14:34Z,dns,DNS query api.zoom.us from WS-264,benign,Normal DNS activity; no action needed.
+E-0299,460,observer,2026-01-12T07:39:27Z,dns,DNS query mail.zoom.us from WS-080,benign,Normal DNS activity; no action needed.
+E-0300,461,observer,2026-01-18T04:15:15Z,dns,DNS query mail.github.com from WS-163,benign,Normal DNS activity; no action needed.
+E-0301,462,observer,2026-01-06T04:17:15Z,auth,User fatma login success on SRV-40 from 10.169.184.76,benign,Normal authentication event.
+E-0302,463,observer,2026-01-14T15:00:04Z,netflow,Outbound connection from SRV-33 to 165.124.20.175:445 bytes_out=801796,benign,Normal network flow.
+E-0302,464,responder,2026-01-14T15:00:04Z,alert,Alert received: Outbound connection from SRV-33 to 165.124.20.175:445 bytes_out=801796,benign,Dismiss as low risk; continue monitoring.
+E-0303,465,observer,2026-01-14T02:42:39Z,auth,User ahmed login success on WS-145 from 10.191.228.125,benign,Normal authentication event.
+E-0304,466,observer,2026-01-13T11:21:55Z,dns,DNS query office.com from WS-043,benign,Normal DNS activity; no action needed.
+E-0305,467,observer,2026-01-18T01:22:38Z,netflow,Outbound connection from WS-223 to 10.169.19.23:443 bytes_out=115808,benign,Normal network flow.
+E-0306,468,observer,2026-01-02T17:02:07Z,dns,DNS query mail.cloudflare.com from WS-295,benign,Normal DNS activity; no action needed.
+E-0307,469,observer,2026-01-01T03:26:10Z,dns,High entropy DNS query 6gstfs2yzb4k8oiz8sjtxa9.img.secure.xyz from SRV-29,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0307,470,responder,2026-01-01T03:26:10Z,alert,Alert received: High entropy DNS query 6gstfs2yzb4k8oiz8sjtxa9.img.secure.xyz from SRV-29,high_risk,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0308,471,observer,2026-01-08T09:29:43Z,endpoint,Suspicious process rundll32 executed on WS-108 by user unknown,anomalous,Raise alert: suspicious execution; collect process tree and quarantine if needed.
+E-0309,472,observer,2026-01-15T23:21:41Z,dns,High entropy DNS query d939eseqgm5vwipgsemu52vtjxu1kau.img.secure.tk from WS-130,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0309,473,responder,2026-01-15T23:21:41Z,alert,Alert received: High entropy DNS query d939eseqgm5vwipgsemu52vtjxu1kau.img.secure.tk from WS-130,anomalous,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0310,474,observer,2026-01-18T18:59:15Z,dns,High entropy DNS query 9glfri8mqeeb6bznc9q884jxz.img.account.tk from WS-170,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0311,475,observer,2026-01-03T04:45:05Z,auth,Multiple failed logins (27) for user fatma on WS-204 from 10.5.122.218,anomalous,Raise alert: possible brute force; recommend rate limiting and MFA challenge.
+E-0311,476,responder,2026-01-03T04:45:05Z,alert,Alert received: Multiple failed logins (27) for user fatma on WS-204 from 10.5.122.218,anomalous,"Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded."
+E-0312,477,observer,2026-01-04T20:45:13Z,dns,DNS query mail.office.com from WS-092,benign,Normal DNS activity; no action needed.
+E-0313,478,observer,2026-01-17T05:28:45Z,dns,High entropy DNS query ccug7rq8lyyxe7qyo7zww54a6i2koe6r.img.secure.top from WS-106,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0313,479,responder,2026-01-17T05:28:45Z,alert,Alert received: High entropy DNS query ccug7rq8lyyxe7qyo7zww54a6i2koe6r.img.secure.top from WS-106,anomalous,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0314,480,observer,2026-01-11T01:31:47Z,netflow,Unusual outbound connection from WS-170 to 10.107.82.166:4444 bytes_out=49072,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0315,481,observer,2026-01-04T06:28:56Z,netflow,Unusual outbound connection from SRV-23 to 47.207.9.225:53 bytes_out=1988535,anomalous,Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.
+E-0315,482,responder,2026-01-04T06:28:56Z,alert,Alert received: Unusual outbound connection from SRV-23 to 47.207.9.225:53 bytes_out=1988535,anomalous,"Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs."
+E-0316,483,observer,2026-01-05T03:21:44Z,app,Service api_gateway responded 200 OK on WS-113,benign,Normal application health event.
+E-0317,484,observer,2026-01-12T00:09:55Z,auth,User mahmoud login success on SRV-06 from 10.35.117.97,benign,Normal authentication event.
+E-0318,485,observer,2026-01-13T05:48:38Z,dns,DNS query cdn.microsoft.com from DC-01,benign,Normal DNS activity; no action needed.
+E-0319,486,observer,2026-01-04T03:55:19Z,auth,User mohamed login success on SRV-09 from 10.0.220.134,benign,Normal authentication event.
+E-0320,487,observer,2026-01-11T09:53:06Z,netflow,Outbound connection from WS-118 to 10.50.217.35:53 bytes_out=1002637,benign,Normal network flow.
+E-0320,488,responder,2026-01-11T09:53:06Z,alert,Alert received: Outbound connection from WS-118 to 10.50.217.35:53 bytes_out=1002637,benign,Dismiss as low risk; continue monitoring.
+E-0321,489,observer,2026-01-15T12:31:49Z,dns,High entropy DNS query a7h7aynu0xgj1qq81xrzn0994lx994.sync.verify.pw from WS-279,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.
+E-0321,490,responder,2026-01-15T12:31:49Z,alert,Alert received: High entropy DNS query a7h7aynu0xgj1qq81xrzn0994lx994.sync.verify.pw from WS-279,anomalous,"Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval."
+E-0321,491,consultant,2026-01-15T12:31:49Z,correlation,Correlation analysis for High entropy DNS query a7h7aynu0xgj1qq81xrzn0994lx994.sync.verify.pw from WS-279,benign,No strong evidence of coordinated attack; document findings and continue monitoring.
+E-0322,492,observer,2026-01-17T00:03:36Z,app,Service hr_portal responded 200 OK on WS-061,benign,Normal application health event.
+E-0323,493,observer,2026-01-14T08:44:02Z,app,Service billing error 502 spike on SRV-15,anomalous,Investigate service degradation; check downstream dependencies and recent deployments.
+E-0323,494,responder,2026-01-14T08:44:02Z,alert,Alert received: Service billing error 502 spike on SRV-15,anomalous,Prioritize incident and assign to analyst; gather supporting telemetry.
+E-0324,495,observer,2026-01-07T09:15:43Z,dns,DNS query cdn.cloudflare.com from WS-114,benign,Normal DNS activity; no action needed.
+E-0325,496,observer,2026-01-02T09:28:28Z,endpoint,Endpoint AV scan completed on WS-090 (no threats),benign,Normal endpoint security event.
+E-0326,497,observer,2026-01-07T22:36:39Z,app,Service billing responded 200 OK on WS-100,benign,Normal application health event.
+E-0327,498,observer,2026-01-03T02:35:22Z,endpoint,Endpoint AV scan completed on WS-142 (no threats),benign,Normal endpoint security event.
+E-0328,499,observer,2026-01-02T15:58:20Z,netflow,Outbound connection from WS-047 to 10.141.115.156:3389 bytes_out=955698,benign,Normal network flow.
+E-0329,500,observer,2026-01-10T21:10:23Z,dns,High entropy DNS query 6q8q2y4pv33b4hqeyoou0w78aqpsfz.sync.secure.pw from WS-260,anomalous,Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.

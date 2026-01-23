@@ -1,0 +1,36 @@
+{
+  "rows": 500,
+  "columns": 8,
+  "column_names": [
+    "event_id",
+    "sample_id",
+    "role",
+    "event_time",
+    "event_type",
+    "event_text",
+    "label",
+    "target_text"
+  ],
+  "dtypes": {
+    "event_id": "object",
+    "sample_id": "int64",
+    "role": "object",
+    "event_time": "object",
+    "event_type": "object",
+    "event_text": "object",
+    "label": "object",
+    "target_text": "object"
+  },
+  "missing_values": {
+    "event_id": 0,
+    "sample_id": 0,
+    "role": 0,
+    "event_time": 0,
+    "event_type": 0,
+    "event_text": 0,
+    "label": 0,
+    "target_text": 0
+  },
+  "vitality_value_counts": null,
+  "vitality_column": null
+}
