@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 import torch
 from datasets import load_dataset
 from transformers import (
@@ -10,7 +12,10 @@ from transformers import (
 )
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 
+load_dotenv()
+
 MODEL_NAME = "meta-llama/Llama-3.2-3B"
+HF_TOKEN = os.getenv("HF_TOKEN")
 
 def train(agent_name, data_path, output_dir):
     
@@ -21,7 +26,7 @@ def train(agent_name, data_path, output_dir):
         bnb_4bit_use_double_quant=True,
     )
 
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, token=HF_TOKEN)
     
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
@@ -32,6 +37,7 @@ def train(agent_name, data_path, output_dir):
         quantization_config=bnb_config,
         device_map="auto",
         trust_remote_code=True,
+        token=HF_TOKEN
     )
     
     model = prepare_model_for_kbit_training(model)

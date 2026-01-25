@@ -1,3 +1,4 @@
+dotenv
 torch
 datasets
 peft
