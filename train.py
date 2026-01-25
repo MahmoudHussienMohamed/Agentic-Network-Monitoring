@@ -7,25 +7,55 @@ from transformers import (
     AutoModelForCausalLM,
     TrainingArguments,
     Trainer,
-    BitsAndBytesConfig,
-    DataCollatorForLanguageModeling,
 )
-from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
+from peft import LoraConfig, get_peft_model
+from dataclasses import dataclass
+from typing import Any, Dict, List
+from transformers.tokenization_utils_base import PreTrainedTokenizerBase
 
 load_dotenv()
 
 MODEL_NAME = "meta-llama/Llama-3.2-3B"
 HF_TOKEN = os.getenv("HF_TOKEN")
 
+@dataclass
+class DataCollatorForCompletionOnly:
+    """Custom data collator that properly handles padding for causal LM."""
+    tokenizer: PreTrainedTokenizerBase
+    
+    def __call__(self, features: List[Dict[str, Any]]) -> Dict[str, Any]:
+        # Extract input_ids and labels
+        input_ids = [f["input_ids"] for f in features]
+        labels = [f["labels"] for f in features]
+        
+        # Find max length
+        max_length = max(len(ids) for ids in input_ids)
+        
+        # Pad sequences
+        padded_input_ids = []
+        padded_labels = []
+        attention_mask = []
+        
+        for ids, lbls in zip(input_ids, labels):
+            padding_length = max_length - len(ids)
+            
+            # Pad input_ids
+            padded_input_ids.append(ids + [self.tokenizer.pad_token_id] * padding_length)
+            
+            # Pad labels with -100 (ignore index)
+            padded_labels.append(lbls + [-100] * padding_length)
+            
+            # Create attention mask
+            attention_mask.append([1] * len(ids) + [0] * padding_length)
+        
+        return {
+            "input_ids": torch.tensor(padded_input_ids, dtype=torch.long),
+            "labels": torch.tensor(padded_labels, dtype=torch.long),
+            "attention_mask": torch.tensor(attention_mask, dtype=torch.long),
+        }
+
 def train(agent_name, data_path, output_dir):
     
-    bnb_config = BitsAndBytesConfig(
-        load_in_4bit=True,
-        bnb_4bit_quant_type="nf4",
-        bnb_4bit_compute_dtype=torch.float16,
-        bnb_4bit_use_double_quant=True,
-    )
-
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, token=HF_TOKEN)
     
     if tokenizer.pad_token is None:
@@ -34,14 +64,14 @@ def train(agent_name, data_path, output_dir):
     
     model = AutoModelForCausalLM.from_pretrained(
         MODEL_NAME,
-        quantization_config=bnb_config,
+        torch_dtype=torch.float16,
         device_map="auto",
         trust_remote_code=True,
         token=HF_TOKEN
     )
     
-    model = prepare_model_for_kbit_training(model)
-    model.config.use_cache = False  # disable cache for training
+    model.config.use_cache = False
+    model.gradient_checkpointing_enable()
     
     lora = LoraConfig(
         r=8,
@@ -71,9 +101,11 @@ def train(agent_name, data_path, output_dir):
             return_tensors=None,
         )
         
-        tokenized["labels"] = tokenized["input_ids"].copy()
-        
-        return tokenized
+        # Simply copy as plain Python lists
+        return {
+            "input_ids": tokenized["input_ids"],
+            "labels": tokenized["input_ids"],  # Same as input for causal LM
+        }
 
     tokenized_dataset = dataset.map(
         tokenize, 
@@ -81,27 +113,25 @@ def train(agent_name, data_path, output_dir):
         desc="Tokenizing dataset"
     )
     
-    data_collator = DataCollatorForLanguageModeling(
-        tokenizer=tokenizer,
-        mlm=False,  # Causal LM, not masked LM
-    )
+    # Use custom data collator
+    data_collator = DataCollatorForCompletionOnly(tokenizer=tokenizer)
 
     args = TrainingArguments(
         output_dir=output_dir,
-        per_device_train_batch_size=1,
-        gradient_accumulation_steps=8,
+        per_device_train_batch_size=2,
+        gradient_accumulation_steps=4,
         learning_rate=2e-4,
-        num_train_epochs=4,
+        num_train_epochs=4, # replaced to 10 for consultant
         fp16=True,
         logging_steps=20,
         save_strategy="epoch",
-        save_total_limit=2,  # Keep only 2 checkpoints to save space
-        optim="paged_adamw_8bit",
+        save_total_limit=2,
+        optim="adamw_torch",
         report_to="none",
         warmup_steps=100,
         lr_scheduler_type="cosine",
-        gradient_checkpointing=True,  # Save memory
-        max_grad_norm=1.0,  # Gradient clipping
+        gradient_checkpointing=True,
+        max_grad_norm=1.0,
         logging_first_step=True,
         load_best_model_at_end=False,
         ddp_find_unused_parameters=False,
