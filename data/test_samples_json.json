@@ -1,0 +1,181 @@
+{
+  "test_scenarios": [
+    {
+      "scenario_id": 1,
+      "name": "DNS Tunneling Attack",
+      "severity": "high",
+      "event": {
+        "timestamp": "2026-01-25T14:30:45Z",
+        "type": "dns",
+        "details": "High entropy DNS query xk9p2mzqw7h5vbnc4t8s.cdn.verify.ru from WS-142",
+        "source": "WS-142",
+        "user": "mariam"
+      },
+      "expected_observer_classification": "high_risk",
+      "expected_responder_action": "isolate_host",
+      "expected_consultant_recommendation": "DNS tunneling investigation"
+    },
+    {
+      "scenario_id": 2,
+      "name": "C2 Communication",
+      "severity": "high",
+      "event": {
+        "timestamp": "2026-01-25T14:31:12Z",
+        "type": "netflow",
+        "details": "Unusual outbound connection from WS-089 to 10.45.123.67:4444 bytes_out=1523847",
+        "source": "WS-089",
+        "destination": "10.45.123.67:4444",
+        "bytes_out": 1523847
+      },
+      "expected_observer_classification": "high_risk",
+      "expected_responder_action": "block_ip_isolate_host",
+      "expected_consultant_recommendation": "C2 investigation and lateral movement scan"
+    },
+    {
+      "scenario_id": 3,
+      "name": "Brute Force Attack",
+      "severity": "medium",
+      "event": {
+        "timestamp": "2026-01-25T14:31:45Z",
+        "type": "auth",
+        "details": "Multiple failed logins (23) for user admin on SRV-12 from 10.88.192.45",
+        "source_ip": "10.88.192.45",
+        "target": "SRV-12",
+        "user": "admin",
+        "failed_attempts": 23
+      },
+      "expected_observer_classification": "anomalous",
+      "expected_responder_action": "rate_limiting_mfa",
+      "expected_consultant_recommendation": "Credential attack monitoring"
+    },
+    {
+      "scenario_id": 4,
+      "name": "Suspicious Process Execution",
+      "severity": "high",
+      "event": {
+        "timestamp": "2026-01-25T14:32:00Z",
+        "type": "endpoint",
+        "details": "Suspicious process powershell executed on WS-205 by user jdoe",
+        "host": "WS-205",
+        "process": "powershell",
+        "user": "jdoe"
+      },
+      "expected_observer_classification": "high_risk",
+      "expected_responder_action": "quarantine_endpoint",
+      "expected_consultant_recommendation": "Malware execution investigation"
+    },
+    {
+      "scenario_id": 5,
+      "name": "Service Degradation",
+      "severity": "medium",
+      "event": {
+        "timestamp": "2026-01-25T14:32:30Z",
+        "type": "app",
+        "details": "Service api_gateway error 500 spike on SRV-45",
+        "service": "api_gateway",
+        "error_code": "500",
+        "host": "SRV-45"
+      },
+      "expected_observer_classification": "anomalous",
+      "expected_responder_action": "investigate_dependencies",
+      "expected_consultant_recommendation": "Service availability monitoring"
+    },
+    {
+      "scenario_id": 6,
+      "name": "Normal Authentication",
+      "severity": "low",
+      "event": {
+        "timestamp": "2026-01-25T14:33:00Z",
+        "type": "auth",
+        "details": "User mohamed login success on WS-178 from 10.156.34.89",
+        "user": "mohamed",
+        "host": "WS-178",
+        "source_ip": "10.156.34.89"
+      },
+      "expected_observer_classification": "benign",
+      "expected_responder_action": "continue_monitoring",
+      "expected_consultant_recommendation": "No action required"
+    },
+    {
+      "scenario_id": 7,
+      "name": "Staged Attack - Exfiltration",
+      "severity": "critical",
+      "event": {
+        "timestamp": "2026-01-25T14:33:30Z",
+        "type": "netflow",
+        "details": "Unusual outbound connection from SRV-08 to 185.76.42.19:443 bytes_out=2847561",
+        "source": "SRV-08",
+        "destination": "185.76.42.19:443",
+        "bytes_out": 2847561
+      },
+      "expected_observer_classification": "staged_attack",
+      "expected_responder_action": "immediate_isolation",
+      "expected_consultant_recommendation": "Full incident response - data exfiltration"
+    },
+    {
+      "scenario_id": 8,
+      "name": "Malicious Script Execution",
+      "severity": "high",
+      "event": {
+        "timestamp": "2026-01-25T14:34:00Z",
+        "type": "endpoint",
+        "details": "Suspicious process wscript executed on WS-112 by user sara",
+        "host": "WS-112",
+        "process": "wscript",
+        "user": "sara"
+      },
+      "expected_observer_classification": "high_risk",
+      "expected_responder_action": "quarantine_reset_credentials",
+      "expected_consultant_recommendation": "Script-based malware investigation"
+    },
+    {
+      "scenario_id": 9,
+      "name": "Normal Network Traffic",
+      "severity": "low",
+      "event": {
+        "timestamp": "2026-01-25T14:34:30Z",
+        "type": "netflow",
+        "details": "Outbound connection from WS-234 to 10.92.45.78:443 bytes_out=245678",
+        "source": "WS-234",
+        "destination": "10.92.45.78:443",
+        "bytes_out": 245678
+      },
+      "expected_observer_classification": "benign",
+      "expected_responder_action": "continue_monitoring",
+      "expected_consultant_recommendation": "No action required"
+    },
+    {
+      "scenario_id": 10,
+      "name": "DNS Exfiltration Attempt",
+      "severity": "critical",
+      "event": {
+        "timestamp": "2026-01-25T14:35:00Z",
+        "type": "dns",
+        "details": "High entropy DNS query m8q3r7p2n5k9x4w1z6v.img.account.tk from SRV-23",
+        "source": "SRV-23",
+        "query": "m8q3r7p2n5k9x4w1z6v.img.account.tk"
+      },
+      "expected_observer_classification": "staged_attack",
+      "expected_responder_action": "block_domain_isolate",
+      "expected_consultant_recommendation": "DNS-based data exfiltration investigation"
+    }
+  ],
+  "metadata": {
+    "created": "2026-01-25T14:00:00Z",
+    "version": "1.0",
+    "total_scenarios": 10,
+    "severity_distribution": {
+      "critical": 2,
+      "high": 4,
+      "medium": 2,
+      "low": 2
+    },
+    "event_types": {
+      "dns": 3,
+      "netflow": 4,
+      "auth": 2,
+      "endpoint": 2,
+      "app": 1
+    }
+  }
+}
