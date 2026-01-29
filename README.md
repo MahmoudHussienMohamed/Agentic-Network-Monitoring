@@ -8,6 +8,8 @@ The system mimics a real-world Security Operations Center (SOC) through a hierar
 2.  **Responder Agent**: Provides immediate tactical mitigation and response plans.
 3.  **Consultant Agent**: Offers strategic long-term security analysis and policy recommendations.
 
+Youtube demo [here](https://youtu.be/TWuxiYFSvaY).
+
 ---
 
 ## 💡 Why Fine-Tuning? (vs. Raw LLMs)
