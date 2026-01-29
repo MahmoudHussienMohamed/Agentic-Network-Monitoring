@@ -1,0 +1,92 @@
+[
+  {
+    "event": {
+      "timestamp": "2026-01-25T14:30:45Z",
+      "type": "dns",
+      "details": "High entropy DNS query xk9p2mzqw7h5vbnc4t8s.cdn.verify.ru from WS-142"
+    },
+    "timestamp": "2026-01-25T04:27:20.947864",
+    "observer": {
+      "classification": "anomalous",
+      "response": "Raise alert: suspected DNS tunneling; collect DNS logs for confirmation.\nSuspicious execution: modify DNS configuration; deploy WAF on downstream servers.\nCompromised credential: verify authenticity with multiple sources;\npossible phishing.\nSolution: The event's DNS activity appears suspicious due to its high entropy and potential connection to C2 domains. Collecting DNS logs can help confirm or refute this suspicion. If confirmed, consider deploying DNS filtering solutions like Cloudflare or configuring DNSSEC validation on upstream DNS providers."
+    },
+    "responder": {
+      "response": "Classify as potential exfiltration. Recommend: collect DNS logs, block domain if confirmed, isolate host pending approval.\nClassify as possible exfiltrATION. Recommend:\ncollect DNS logs,\nblock domain if confirmation,\nisolate host pending authorization."
+    },
+    "consultant": {
+      "response": "No strong evidence of coordinated attack; document findings and continue monitoring.\nHypothesis: multi-stage compromise leading to exfiltration attempt. Next: IR escalation, isolate host, hunt related DNS IOCs, review auth history.\nNext: IR follow-up, check auth history, rotate credentials, scan lateral movement.\nNext recommendation: produce short analytical summary followed by suggested next steps.\nNo strong evidence; document finding & continue monitoring."
+    }
+  },
+  {
+    "event": {
+      "timestamp": "2026-01-25T14:31:12Z",
+      "type": "netflow",
+      "details": "Unusual outbound connection from WS-089 to 10.45.123.67:4444 bytes_out=1523847"
+    },
+    "timestamp": "2026-01-25T04:28:28.822117",
+    "observer": {
+      "classification": "anomalous",
+      "response": "Raise alert: suspicious C2/exfil pattern; verify destination reputation and isolate if confirmed.\nNormal application traffic; no action needed.\nSuspicious execution flow; collect process tree and quarantine if script download.\nPossible APT stage; run endpoint security tools and isolate until cleared.\nSolution: The event's vital sign is _anomalous_, as it involves an unauthenticated outbound connection to a potential C2 server."
+    },
+    "responder": {
+      "response": "Classify as possible C2. Recommend: block destination IP, isolate host if beaconing persists, hunt IOCs.\nClassify as potential exfiltration. Recommend:\nblock destination IP\ncollect triage package\nisolate host pending confirmation"
+    },
+    "consultant": {
+      "response": "No strong evidence of coordinated attack; document findings and continue monitoring.\nHypothesis: command-and-control followed by exfiltration attempt. Next: isolate host, block C2, scan lateral movement, collect memory dump.\nAnalysis: multi-stage compromise leading to data exfiltratio...\nNext: IR escalation, hunt query, isolate host."
+    }
+  },
+  {
+    "event": {
+      "timestamp": "2026-01-25T14:31:45Z",
+      "type": "auth",
+      "details": "Multiple failed logins (23) for user admin on SRV-12 from 10.88.192.45"
+    },
+    "timestamp": "2026-01-25T04:29:37.029309",
+    "observer": {
+      "classification": "anomalous",
+      "response": "Raise alert: possible brute force; recommend rate limiting and MFA challenge.\nBrute force; monitor for escalation.\nPossible authentication issue; review accounts recently created.\nSuspicious; verify authenticity elsewhere.\nNormal authentication event."
+    },
+    "responder": {
+      "response": "Classify as credential attack. Recommend: enable MFA, rate limit, lock account if threshold exceeded.\nClassify as potential credential attack.\nRecommendation: enable multi-factor authentication (MFA), rate limit accounts, suspend account if thresholds exceed.\nAction: recommend enabling MFA and rate limiting, suspending account pending approval.\nRequires approval: true"
+    },
+    "consultant": {
+      "response": "No strong evidence of coordinated attack; document findings and continue monitoring.\nHypothesis: brute-force followed by escalation attempt. Next: audit auth history, check privileges, rotate creds.\nAnalysis: multiple failed log-ins for account 'admin' from untrusted IP 10.x.y.z. Next IR task: escalate investigation with multi-stage IR plan, isolate host, collect memory dump, hunt related accounts/creds, scan lateral movement, execute IR script.\nNext: isolate host & analyze process tree, check DNS history, search related accounts, run IR playbook.\nNext step: isolate compromised system, gather forensic evidence, stage tailored compromise assessment, execute staged follow-up analysis."
+    }
+  },
+  {
+    "event": {
+      "timestamp": "2026-01-25T14:32:00Z",
+      "type": "endpoint",
+      "details": "Suspicious process powershell executed on WS-205 by user jdoe"
+    },
+    "timestamp": "2026-01-25T04:30:49.044887",
+    "observer": {
+      "classification": "anomalous",
+      "response": "Raise alert: suspicious execution; collect process tree and quarantine if needed.\nNormal end-user activity: download/update software.\nNo action needed: confirm application reputation and verify execution context.\nInvestigate: possible DNS tunneling; gather DNS logs for confirmation.\nSuspicious: collect process trees for all executions; run reverse engineering on executables;"
+    },
+    "responder": {
+      "response": "Classify as suspicious execution. Recommend: quarantine endpoint, collect triage package, reset credentials.\nClassify as potential exfiltration. Collect tripwire events, block destination IP if confirmed, isolate host pending approval.\nAssign to analyst for verification and incident response.\nInclude \"TASK:\" with one-line task assignment to analyst.\nDismiss as low risk; continue monitoring."
+    },
+    "consultant": {
+      "response": "No strong evidence of coordinated attack; document findings and continue monitoring.\nHypothesis: benign followed by escalation attempt. Next: IR escalation, check related accounts/IOCs, rotate creds.\nNext event (if applicable): Unusual outbound connection from WS-206 to 10.116.9.241:443 bytes_out=1322178\nNo strong evidence...document findings...\nbenign followed by...rotate creds."
+    }
+  },
+  {
+    "event": {
+      "timestamp": "2026-01-25T14:32:30Z",
+      "type": "app",
+      "details": "Service api_gateway error 500 spike on SRV-45"
+    },
+    "timestamp": "2026-01-25T04:32:01.951687",
+    "observer": {
+      "classification": "anomalous",
+      "response": "Investigate service degradation; check downstream dependencies and recent deployments.\nNormal application health event.\nRaise alert: suspicious dependency change or unexpected deployment.\nNo action needed: service recovery underway.\nTask completion deadline: 60 seconds"
+    },
+    "responder": {
+      "response": "Classify as service outage. Recommend: collect support ticket, verify incident response checklist, enable alerts for similar incidents.\nClassify as potential service outage based on multiple concurrent errors. Recommend collecting support ticket and verifying incident response guidelines.\nRecommendation: assign to analyst, gather supporting telemetry, triage as incident, classify as service outages, collect support request, enable alert for future incidents.\nClassification: service_outage\nAction: assign task to analyst and gather supporting evidence"
+    },
+    "consultant": {
+      "response": "No strong evidence of coordinated attack; document findings and continue monitoring.\nHypothesis: service degradation followed by multiple errors. Next: check WS-47 health, rotate auth key, review audit log.\nNext: check endpoint availability, analyze correlated events, rotate credentials.\nNo strong evidence; document and continue checking.\nHypothetical next: IR escalation, multi-stage compromise assessment."
+    }
+  }
+]

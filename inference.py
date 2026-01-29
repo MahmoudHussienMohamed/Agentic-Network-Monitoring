@@ -1,6 +1,7 @@
 """
 Multi-Agent Network Security Monitoring System
 Orchestrates Observer -> Responder -> Consultant workflow
+FIXED: Proper stopping criteria and output parsing
 """
 
 import os
@@ -17,40 +18,72 @@ class SecurityAgent:
     
     def __init__(self, base_model_name: str, adapter_path: str, agent_name: str):
         self.agent_name = agent_name
-        self.tokenizer = AutoTokenizer.from_pretrained(base_model_name)
+        print(f"Loading {agent_name} agent...")
         
-        # Load base model
+        self.tokenizer = AutoTokenizer.from_pretrained(base_model_name)
+        self.tokenizer.pad_token = self.tokenizer.eos_token
+        
         base_model = AutoModelForCausalLM.from_pretrained(
             base_model_name,
             torch_dtype=torch.float16,
-            device_map="auto"
+            device_map="auto",
+            low_cpu_mem_usage=True
         )
         
-        # Load LoRA adapter
         self.model = PeftModel.from_pretrained(base_model, adapter_path)
         self.model.eval()
+        print(f"✓ {agent_name} loaded")
         
-    def generate_response(self, prompt: str, max_new_tokens: int = 256) -> str:
-        """Generate response from the agent"""
-        inputs = self.tokenizer(prompt, return_tensors="pt").to(self.model.device)
+    def generate_response(self, prompt: str, max_new_tokens: int = 150) -> str:
+        """Generate response with proper stopping criteria"""
+        inputs = self.tokenizer(prompt, return_tensors="pt", truncation=True, max_length=512)
+        inputs = {k: v.to(self.model.device) for k, v in inputs.items()}
         
         with torch.no_grad():
             outputs = self.model.generate(
                 **inputs,
                 max_new_tokens=max_new_tokens,
-                temperature=0.7,
-                top_p=0.9,
+                min_new_tokens=10,
+                temperature=0.3,  # Lower temperature for more focused output
+                top_p=0.85,
                 do_sample=True,
-                pad_token_id=self.tokenizer.eos_token_id
+                pad_token_id=self.tokenizer.eos_token_id,
+                eos_token_id=self.tokenizer.eos_token_id,
+                repetition_penalty=1.2,  # Penalize repetition
+                no_repeat_ngram_size=3,  # Prevent 3-gram repetition
+                # early_stopping=True
             )
         
-        # Decode only the generated tokens (exclude prompt)
         generated_text = self.tokenizer.decode(
             outputs[0][inputs['input_ids'].shape[1]:], 
             skip_special_tokens=True
         )
         
+        generated_text = self._clean_response(generated_text)
+        
         return generated_text.strip()
+    
+    def _clean_response(self, text: str) -> str:
+        """Clean up response by removing repetitions and incomplete sentences"""
+        stop_phrases = [
+            "Task:",
+            "Role:",
+            "Event time:",
+            "Based on the observer",
+            "Provide a single-line",
+            "\n\n\n"
+        ]
+        
+        for phrase in stop_phrases:
+            if phrase in text:
+                text = text.split(phrase)[0]
+        
+        # Take only first few complete sentences (max 5 lines)
+        lines = [line.strip() for line in text.split('\n') if line.strip()]
+        if len(lines) > 5:
+            lines = lines[:5]
+        
+        return '\n'.join(lines)
 
 
 class ObserverAgent(SecurityAgent):
@@ -69,7 +102,7 @@ Format:
 label: <one of the four>
 reason: <brief justification>"""
 
-        response = self.generate_response(prompt)
+        response = self.generate_response(prompt, max_new_tokens=100)
         return response
 
 
@@ -77,7 +110,7 @@ class ResponderAgent(SecurityAgent):
     """Provides tactical response recommendations"""
     
     def recommend_action(self, event: Dict, observer_classification: str) -> str:
-        """Generate response recommendation based on observer's classification"""
+        """Generate response recommendation"""
         prompt = f"""Role: responder
 Observer classification: {observer_classification}
 Event time: {event['timestamp']}
@@ -88,7 +121,7 @@ Task: Based on the observer's classification and the event details, propose a co
 If the action is high-impact (network isolation, credential reset, blocking IP), include "ACTION:" with a one-line command suggestion and require human approval tag "[requires_approval]".
 Also include a one-line "RATIONALE:" explaining why."""
 
-        response = self.generate_response(prompt)
+        response = self.generate_response(prompt, max_new_tokens=120)
         return response
 
 
@@ -105,7 +138,7 @@ Observer classification (if available): {observer_classification}
 
 Task: Produce a short analytical report (3-6 sentences) summarizing the event, impact assessment, recommended next steps, and suggested monitoring queries or checks."""
 
-        response = self.generate_response(prompt)
+        response = self.generate_response(prompt, max_new_tokens=150)
         return response
 
 
@@ -113,59 +146,61 @@ class SecurityOrchestrator:
     """Orchestrates the multi-agent workflow"""
     
     def __init__(self, base_model_name: str, adapters_dir: str):
-        print("Loading agents...")
+        print("="*80)
+        print("INITIALIZING MULTI-AGENT SECURITY SYSTEM")
+        print("="*80)
+        
         self.observer = ObserverAgent(
             base_model_name,
             os.path.join(adapters_dir, "observer"),
-            "observer"
+            "Observer"
         )
-        print("✓ Observer agent loaded")
         
         self.responder = ResponderAgent(
             base_model_name,
             os.path.join(adapters_dir, "responder"),
-            "responder"
+            "Responder"
         )
-        print("✓ Responder agent loaded")
         
         self.consultant = ConsultantAgent(
             base_model_name,
             os.path.join(adapters_dir, "consultant"),
-            "consultant"
+            "Consultant"
         )
-        print("✓ Consultant agent loaded")
-        print("All agents ready!\n")
+        
+        print("="*80)
+        print("ALL AGENTS READY")
+        print("="*80 + "\n")
     
     def process_event(self, event: Dict) -> Dict:
         """Process security event through all three agents"""
         print(f"\n{'='*80}")
-        print(f"PROCESSING EVENT: {event['details'][:60]}...")
+        print(f"EVENT: {event['details'][:70]}...")
         print(f"{'='*80}\n")
         
         # Stage 1: Observer Classification
-        print("Stage 1: OBSERVER ANALYSIS")
-        print("-" * 80)
+        print("│ STAGE 1: OBSERVER ANALYSIS")
+        print("├" + "─"*78)
         observer_response = self.observer.analyze_event(event)
-        print(observer_response)
+        print(f"│ {observer_response.replace(chr(10), chr(10) + '│ ')}")
         
-        # Extract classification label
-        classification = "benign"
-        for line in observer_response.split('\n'):
-            if line.lower().startswith('label:'):
-                classification = line.split(':', 1)[1].strip()
-                break
+        # Extract classification
+        classification = self._extract_classification(observer_response)
+        print(f"│\n│ → Classification: {classification.upper()}")
         
         # Stage 2: Responder Recommendation
-        print("\n\nStage 2: RESPONDER RECOMMENDATION")
-        print("-" * 80)
+        print(f"\n│ STAGE 2: RESPONDER RECOMMENDATION")
+        print("├" + "─"*78)
         responder_response = self.responder.recommend_action(event, classification)
-        print(responder_response)
+        print(f"│ {responder_response.replace(chr(10), chr(10) + '│ ')}")
         
         # Stage 3: Consultant Strategic Analysis
-        print("\n\nStage 3: CONSULTANT STRATEGIC ANALYSIS")
-        print("-" * 80)
+        print(f"\n│ STAGE 3: CONSULTANT STRATEGIC ANALYSIS")
+        print("├" + "─"*78)
         consultant_response = self.consultant.analyze_correlation(event, classification)
-        print(consultant_response)
+        print(f"│ {consultant_response.replace(chr(10), chr(10) + '│ ')}")
+        
+        print(f"\n{'='*80}\n")
         
         # Compile results
         result = {
@@ -183,14 +218,30 @@ class SecurityOrchestrator:
             }
         }
         
-        print(f"\n{'='*80}\n")
         return result
+    
+    def _extract_classification(self, response: str) -> str:
+        """Extract classification label from observer response"""
+        for line in response.split('\n'):
+            line_lower = line.lower().strip()
+            if line_lower.startswith('label:'):
+                label = line.split(':', 1)[1].strip()
+                # Clean any extra text after the label
+                for word in ['benign', 'anomalous', 'high_risk', 'staged_attack']:
+                    if word in label.lower():
+                        return word
+        return "anomalous"  # Default if not found
     
     def process_events_batch(self, events: List[Dict]) -> List[Dict]:
         """Process multiple events"""
         results = []
+        total = len(events)
+        
         for i, event in enumerate(events, 1):
-            print(f"\n\n### EVENT {i}/{len(events)} ###")
+            print(f"\n{'#'*80}")
+            print(f"# EVENT {i}/{total}")
+            print(f"{'#'*80}")
+            
             result = self.process_event(event)
             results.append(result)
         
@@ -198,7 +249,7 @@ class SecurityOrchestrator:
 
 
 def create_test_events() -> List[Dict]:
-    """Create sample test events based on training data patterns"""
+    """Create sample test events"""
     return [
         {
             "timestamp": "2026-01-25T14:30:45Z",
@@ -239,13 +290,9 @@ def main():
     """Main execution function"""
     # Configuration
     BASE_MODEL = "meta-llama/Llama-3.2-3B"
-    ADAPTERS_DIR = "adapters"  # Directory containing observer/, responder/, consultant/
+    ADAPTERS_DIR = "adapters"
     
-    # Initialize orchestrator
-    print("Initializing Security Orchestration System...")
-    print(f"Base Model: {BASE_MODEL}")
-    print(f"Adapters Directory: {ADAPTERS_DIR}\n")
-    
+    # Initialize orchestrator (this loads all models - takes time)
     orchestrator = SecurityOrchestrator(BASE_MODEL, ADAPTERS_DIR)
     
     # Create test events
@@ -254,6 +301,7 @@ def main():
     # Process events
     print("\n" + "="*80)
     print("STARTING MULTI-AGENT SECURITY ANALYSIS")
+    print(f"Processing {len(test_events)} events...")
     print("="*80)
     
     results = orchestrator.process_events_batch(test_events)
@@ -273,7 +321,7 @@ def main():
     
     print("\nClassification Distribution:")
     for cls, count in sorted(classifications.items()):
-        print(f"  {cls}: {count}")
+        print(f"  • {cls}: {count}")
     
     print(f"\nTotal events processed: {len(results)}")
     print("="*80)

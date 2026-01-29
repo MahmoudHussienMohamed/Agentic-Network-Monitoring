@@ -24,14 +24,11 @@ class DataCollatorForCompletionOnly:
     tokenizer: PreTrainedTokenizerBase
     
     def __call__(self, features: List[Dict[str, Any]]) -> Dict[str, Any]:
-        # Extract input_ids and labels
         input_ids = [f["input_ids"] for f in features]
         labels = [f["labels"] for f in features]
         
-        # Find max length
         max_length = max(len(ids) for ids in input_ids)
         
-        # Pad sequences
         padded_input_ids = []
         padded_labels = []
         attention_mask = []
@@ -39,13 +36,10 @@ class DataCollatorForCompletionOnly:
         for ids, lbls in zip(input_ids, labels):
             padding_length = max_length - len(ids)
             
-            # Pad input_ids
             padded_input_ids.append(ids + [self.tokenizer.pad_token_id] * padding_length)
             
-            # Pad labels with -100 (ignore index)
             padded_labels.append(lbls + [-100] * padding_length)
             
-            # Create attention mask
             attention_mask.append([1] * len(ids) + [0] * padding_length)
         
         return {
@@ -101,10 +95,9 @@ def train(agent_name, data_path, output_dir):
             return_tensors=None,
         )
         
-        # Simply copy as plain Python lists
         return {
             "input_ids": tokenized["input_ids"],
-            "labels": tokenized["input_ids"],  # Same as input for causal LM
+            "labels": tokenized["input_ids"],  
         }
 
     tokenized_dataset = dataset.map(
